@@ -32,7 +32,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
         btnCadastrar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -63,7 +63,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         txtCidade = new javax.swing.JTextField();
         lblCidade = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cboEstado = new javax.swing.JComboBox<>();
         lblCEP = new javax.swing.JLabel();
         lblComplemento = new javax.swing.JLabel();
         txtComplemento = new javax.swing.JTextField();
@@ -88,10 +88,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -206,7 +206,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         lblEstado.setText("Estado:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
+        cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
 
         lblCEP.setText("CEP:");
 
@@ -283,7 +283,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                                                 .addComponent(txtBairro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtComplemento)
                                     .addComponent(formtxtCEP))))
                         .addGap(18, 18, 18))))
@@ -335,12 +335,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addComponent(lblBairro)
                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEstado)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCidade)
                     .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 39, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cadastro de Clientes", jPanel3);
@@ -352,7 +352,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "CPF", "Fone", "E-mail", "Sexo", "Estado Civil", "Data Nasc.", "Endereço", "Número", "Bairro", "Cidade", "Complemento", "CEP", "Estado"
+                "Nome", "CPF", "Fone", "E-mail", "Sexo", "Estado Civil", "Endereço", "Número", "Bairro", "Cidade", "Complemento", "CEP", "Estado"
             }
         ));
         tblClientes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -366,7 +366,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Lista de Clientes", jPanel4);
@@ -383,7 +383,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                             .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
@@ -404,7 +404,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -412,7 +412,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -436,12 +436,20 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
-    //Instancia da tela detalhes
-    public TelaDetalhes detalhes = new TelaDetalhes();
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        //EXLUINDO LINHA
+        int  linhaSelecionada = tblClientes.getSelectedRow();
+       //-1 é o valor quando não seleciono nada
+       if(linhaSelecionada == -1){
+           JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
+       }else{
+           DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+           modelo.removeRow(linhaSelecionada);
+       }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        //COLOCANCO ITENS NA TABELA
         String nome = txtNome.getText();
         String CPF = formtxtCPF.getText();
         String fone = formtxtFone.getText();
@@ -449,24 +457,61 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         String sistemaSexo = "";
         if(cboSexo.getSelectedIndex()>0){
             sistemaSexo = cboSexo.getSelectedItem().toString();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Preencha o Sexo!");
         }
         String sistemaCivil = "";
         if(cboEstadoCivil.getSelectedIndex()>0){
             sistemaCivil = cboEstadoCivil.getSelectedItem().toString();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Preencha o Estado Civil!");
         }
+        String endereco = txtEndereco.getText();
+        String numero = txtNumero.getText();
+        String bairro = txtBairro.getText();
+        String cidade = txtCidade.getText();
+        String complemento = txtComplemento.getText();
+        String cep = formtxtCEP.getText();
+        String estado = cboEstado.getSelectedItem().toString();
+                
         DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
-        modelo.addRow(new String[]{nome, CPF, fone, email, sistemaSexo, sistemaCivil});
-        JOptionPane.showMessageDialog(rootPane, "Cliente cadastrado com sucesso!");
+        modelo.addRow(new String[]{nome, CPF, fone, email, sistemaSexo, sistemaCivil, endereco, numero, bairro, cidade, complemento, cep, estado});
         
-        
-        
-        
-        
-        
-        
-        
-        //chamando metodo da telha detalhes para populacao de tabela
-        detalhes.adicionarDados(nome, CPF, fone, email, sistemaSexo, sistemaCivil);
+       
+
+        //MENSAGEM PAGA USUARIO
+        if(txtNome.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha o nome!");
+        }
+        if(formtxtCPF.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha o CPF!");
+        }
+        if(formtxtFone.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha o Telefone!");
+        }
+        if(txtEmail.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha o E-mail!");
+        }
+        if(txtEndereco.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha o Endereço!");
+        }
+        if(txtNumero.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha o Número!");
+        }
+        if(txtBairro.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha o Bairro!");
+        }
+        if(txtCidade.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha a Cidade!");
+        }
+        if(txtComplemento.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha o Complemento!");
+        }
+        if(formtxtCEP.getText().strip().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Preencha o CEP!");
+        }
+        //MENSAGEM FINAL
+        //JOptionPane.showMessageDialog(rootPane, "Cliente cadastrado com sucesso!");
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyReleased
@@ -526,16 +571,16 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JComboBox<String> cboAno;
     private javax.swing.JComboBox<String> cboDia;
+    private javax.swing.JComboBox<String> cboEstado;
     private javax.swing.JComboBox<String> cboEstadoCivil;
     private javax.swing.JComboBox<String> cboMes;
     private javax.swing.JComboBox<String> cboSexo;
     private javax.swing.JFormattedTextField formtxtCEP;
     private javax.swing.JFormattedTextField formtxtCPF;
     private javax.swing.JFormattedTextField formtxtFone;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
