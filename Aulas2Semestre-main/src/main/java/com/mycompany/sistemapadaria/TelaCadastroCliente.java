@@ -74,6 +74,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
+        btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -371,6 +372,13 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Lista de Clientes", jPanel4);
 
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -383,6 +391,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                             .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -412,7 +422,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -449,6 +461,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        
         //COLOCANCO ITENS NA TABELA
         String nome = txtNome.getText();
         String CPF = formtxtCPF.getText();
@@ -510,6 +523,20 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         if(formtxtCEP.getText().strip().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Preencha o CEP!");
         }
+        // Limpar os campos após adicionar o produto
+        txtBairro.setText("");
+        txtCidade.setText("");
+        txtComplemento.setText("");
+        txtNumero.setText("");
+        txtEndereco.setText("");
+        txtEmail.setText("");
+        txtNome.setText("");
+        formtxtCEP.setText("");
+        formtxtFone.setText("");
+        formtxtCPF.setText("");
+        cboEstado.setSelectedIndex(-1);
+        cboEstadoCivil.setSelectedIndex(-1);
+        cboSexo.setSelectedIndex(-1);
         //MENSAGEM FINAL
         //JOptionPane.showMessageDialog(rootPane, "Cliente cadastrado com sucesso!");
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -533,6 +560,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void txtComplementoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComplementoKeyReleased
         txtComplemento.setText(txtComplemento.getText().toUpperCase());
     }//GEN-LAST:event_txtComplementoKeyReleased
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -572,6 +603,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> cboAno;
     private javax.swing.JComboBox<String> cboDia;
     private javax.swing.JComboBox<String> cboEstado;

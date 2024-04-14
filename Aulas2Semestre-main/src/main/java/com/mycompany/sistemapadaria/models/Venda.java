@@ -1,13 +1,48 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.sistemapadaria.models;
 
 /**
  *
- * @author eduardo.mcjesus
+ * @author Vinicius Damaceno
  */
 public class Venda {
     
+public class CarrinhoDeCompras {
+    private String produto;
+    private int quantidade;
+    private double preco;
+    private String categoria;
+
+        public String getProduto() {
+            return produto;
+        }
+
+        public void setProduto(String produto) {
+            this.produto = produto;
+        }
+
+        public int getQuantidade() {
+            return quantidade;
+        }
+
+        public void setQuantidade(int quantidade) {
+            this.quantidade = quantidade;
+        }
+
+        public double getPreco() {
+            return preco;
+        }
+
+        public void setPreco(double preco) {
+            this.preco = preco;
+        }
+
+        public String getCategoria() {
+            return categoria;
+        }
+
+        public void setCategoria(String categoria) {
+            this.categoria = categoria;
+        }
+    }
 }

@@ -66,14 +66,14 @@ public class TelaVenda extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 153, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton1.setText("Cadastrar");
+        jButton1.setText("Comprar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
+        jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -315,53 +315,44 @@ public class TelaVenda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- // Verificar se a tabela está vazia
-if (jTable2.getRowCount() == 0) {
-    JOptionPane.showMessageDialog(null, "Não é possível cadastrar um produto pois a tabela está vazia.");
-    return;
-}
+        // Verificar se a tabela está vazia
+        if (jTable2.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Não é possível cadastrar um produto pois a tabela está vazia.");
+            return;
+        }
 
 // Verificar se algum dos botões de rádio de forma de pagamento está selecionado
-if (!jRadioButton1.isSelected() && !jRadioButton2.isSelected() && !jRadioButton3.isSelected() && !jRadioButton4.isSelected()) {
-    JOptionPane.showMessageDialog(null, "Por favor, selecione uma forma de pagamento.");
-    return;
-}
+        if (!jRadioButton1.isSelected() && !jRadioButton2.isSelected() && !jRadioButton3.isSelected() && !jRadioButton4.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Por favor, selecione uma forma de pagamento.");
+            return;
+        }
 
-// Adicionar o produto à tabela
-String produto = jComboBox1.getSelectedItem().toString();
-String preco = jTextField2.getText();
-String quantidade = jComboBox2.getSelectedItem().toString();
-String categoria = jComboBox3.getSelectedItem().toString();
-String formaPagamento = "";
-
-// Identificar a forma de pagamento selecionada
-if (jRadioButton1.isSelected()) {
-    formaPagamento = jRadioButton1.getText(); // Altere conforme os textos dos botões
-} else if (jRadioButton2.isSelected()) {
-    formaPagamento = jRadioButton2.getText();
-} else if (jRadioButton3.isSelected()) {
-    formaPagamento = jRadioButton3.getText();
-} else if (jRadioButton4.isSelected()) {
-    formaPagamento = jRadioButton4.getText();
-}
+        if (jRadioButton1.isSelected()) {
+            jRadioButton1.getText(); // Altere conforme os textos dos botões
+        } else if (jRadioButton2.isSelected()) {
+            jRadioButton2.getText();
+        } else if (jRadioButton3.isSelected()) {
+            jRadioButton3.getText();
+        } else if (jRadioButton4.isSelected()) {
+            jRadioButton4.getText();
+        }
 
 // Limpar os campos após adicionar o produto
-jComboBox1.setSelectedIndex(-1);
-jTextField2.setText("");
-jComboBox2.setSelectedIndex(-1);
-jComboBox3.setSelectedIndex(-1);
-jRadioButton1.setSelected(false); // Resetar seleção dos botões de forma de pagamento
-jRadioButton2.setSelected(false);
-jRadioButton3.setSelected(false);
-jRadioButton4.setSelected(false);
+        jComboBox1.setSelectedIndex(-1);
+        jTextField2.setText("");
+        jComboBox2.setSelectedIndex(-1);
+        jComboBox3.setSelectedIndex(-1);
+        jRadioButton1.setSelected(false); // Resetar seleção dos botões de forma de pagamento
+        jRadioButton2.setSelected(false);
+        jRadioButton3.setSelected(false);
+        jRadioButton4.setSelected(false);
 
 // Mostrar mensagem de sucesso
-JOptionPane.showMessageDialog(null, "Compra realizada com sucesso!");
-
+        JOptionPane.showMessageDialog(null, "Compra realizada com sucesso!");
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -443,10 +434,8 @@ JOptionPane.showMessageDialog(null, "Compra realizada com sucesso!");
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaVenda().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaVenda().setVisible(true);
         });
     }
 
