@@ -57,7 +57,7 @@
                               <Component id="jProgressBar1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="btnCancelar" min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Component id="btnExcluir" min="-2" pref="157" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnCadastrar" min="-2" pref="157" max="-2" attributes="0"/>
                               </Group>
@@ -86,7 +86,7 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" min="-2" pref="392" max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" min="-2" pref="424" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -94,7 +94,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnCadastrar" min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="btnCancelar" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="btnExcluir" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -112,12 +112,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCancelar">
+        <Component class="javax.swing.JButton" name="btnExcluir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cancelar"/>
+            <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -247,7 +247,7 @@
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jComboBox1" min="-2" pref="142" max="-2" attributes="0"/>
+                                              <Component id="cboEstado" min="-2" pref="142" max="-2" attributes="0"/>
                                               <Component id="txtComplemento" alignment="0" max="32767" attributes="0"/>
                                               <Component id="formtxtCEP" alignment="0" max="32767" attributes="0"/>
                                           </Group>
@@ -314,14 +314,14 @@
                               <Component id="lblBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="39" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -671,7 +671,7 @@
                     <Property name="text" type="java.lang.String" value="Estado:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="cboEstado">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="28">
@@ -750,7 +750,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="1" pref="357" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="1" pref="389" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -770,14 +770,13 @@
                     <Component class="javax.swing.JTable" name="tblClientes">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="14" rowCount="0">
+                          <Table columnCount="13" rowCount="0">
                             <Column editable="true" title="Nome" type="java.lang.Object"/>
                             <Column editable="true" title="CPF" type="java.lang.Object"/>
                             <Column editable="true" title="Fone" type="java.lang.Object"/>
                             <Column editable="true" title="E-mail" type="java.lang.Object"/>
                             <Column editable="true" title="Sexo" type="java.lang.Object"/>
                             <Column editable="true" title="Estado Civil" type="java.lang.Object"/>
-                            <Column editable="true" title="Data Nasc." type="java.lang.Object"/>
                             <Column editable="true" title="Endere&#xe7;o" type="java.lang.Object"/>
                             <Column editable="true" title="N&#xfa;mero" type="java.lang.Object"/>
                             <Column editable="true" title="Bairro" type="java.lang.Object"/>
