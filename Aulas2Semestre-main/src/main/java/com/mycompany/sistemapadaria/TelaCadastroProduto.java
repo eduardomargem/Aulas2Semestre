@@ -4,6 +4,8 @@
  */
 package com.mycompany.sistemapadaria;
 
+import java.awt.Color;
+
 /**
  *
  * @author daniel.passuncao
@@ -91,6 +93,14 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         lblCadastroProduto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblCadastroProduto.setText("Cadastro de Produto");
 
+        txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNomeFocusLost(evt);
+            }
+        });
         txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNomeKeyReleased(evt);
@@ -101,6 +111,14 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         lblDescricao.setText("Descrição:");
 
+        txtDescricao.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDescricaoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDescricaoFocusLost(evt);
+            }
+        });
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescricaoActionPerformed(evt);
@@ -114,6 +132,14 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         lblPreco.setText("Preço:");
 
+        txtPreco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPrecoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecoFocusLost(evt);
+            }
+        });
         txtPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecoActionPerformed(evt);
@@ -167,6 +193,15 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         );
 
         lblVolume.setText("Volume:");
+
+        txtObservacoes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtObservacoesFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtObservacoesFocusLost(evt);
+            }
+        });
 
         lblObservacoes.setText("Observações:");
 
@@ -382,6 +417,38 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void txtDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyReleased
         txtDescricao.setText(txtDescricao.getText().toUpperCase());
     }//GEN-LAST:event_txtDescricaoKeyReleased
+
+    private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
+        txtNome.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtNomeFocusGained
+
+    private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
+        txtNome.setBackground(Color.white);
+    }//GEN-LAST:event_txtNomeFocusLost
+
+    private void txtDescricaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusGained
+        txtDescricao.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtDescricaoFocusGained
+
+    private void txtDescricaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusLost
+        txtNome.setBackground(Color.white);
+    }//GEN-LAST:event_txtDescricaoFocusLost
+
+    private void txtPrecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoFocusGained
+        txtPreco.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtPrecoFocusGained
+
+    private void txtPrecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoFocusLost
+        txtPreco.setBackground(Color.white);
+    }//GEN-LAST:event_txtPrecoFocusLost
+
+    private void txtObservacoesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtObservacoesFocusGained
+        txtObservacoes.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtObservacoesFocusGained
+
+    private void txtObservacoesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtObservacoesFocusLost
+        txtObservacoes.setBackground(Color.white);
+    }//GEN-LAST:event_txtObservacoesFocusLost
 
     /**
      * @param args the command line arguments
