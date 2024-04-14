@@ -4,6 +4,8 @@
  */
 package com.mycompany.sistemapadaria;
 
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -104,10 +106,28 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(255, 239, 238));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
 
         lblCadastroCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblCadastroCliente.setText("Cadastro de Cliente");
 
+        txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNomeFocusLost(evt);
+            }
+        });
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
         txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNomeKeyReleased(evt);
@@ -122,6 +142,14 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         lblEmail.setText("Email:");
 
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -178,6 +206,14 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        txtEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEnderecoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEnderecoFocusLost(evt);
+            }
+        });
         txtEndereco.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtEnderecoKeyReleased(evt);
@@ -186,16 +222,41 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         lblEndereco.setText("Endereço:");
 
+        txtNumero.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNumeroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNumeroFocusLost(evt);
+            }
+        });
+
         lblNumero.setText("Número:");
 
         lblBairro.setText("Bairro:");
 
+        txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBairroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBairroFocusLost(evt);
+            }
+        });
         txtBairro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBairroKeyReleased(evt);
             }
         });
 
+        txtCidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCidadeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCidadeFocusLost(evt);
+            }
+        });
         txtCidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCidadeKeyReleased(evt);
@@ -207,14 +268,62 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         lblEstado.setText("Estado:");
 
         cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
+        cboEstado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cboEstadoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cboEstadoFocusLost(evt);
+            }
+        });
 
         lblCEP.setText("CEP:");
 
         lblComplemento.setText("Complemento:");
 
+        txtComplemento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtComplementoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtComplementoFocusLost(evt);
+            }
+        });
         txtComplemento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtComplementoKeyReleased(evt);
+            }
+        });
+
+        formtxtCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formtxtCPFFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formtxtCPFFocusLost(evt);
+            }
+        });
+        formtxtCPF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formtxtCPFKeyTyped(evt);
+            }
+        });
+
+        formtxtFone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formtxtFoneFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formtxtFoneFocusLost(evt);
+            }
+        });
+
+        formtxtCEP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formtxtCEPFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formtxtCEPFocusLost(evt);
             }
         });
 
@@ -533,6 +642,107 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void txtComplementoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComplementoKeyReleased
         txtComplemento.setText(txtComplemento.getText().toUpperCase());
     }//GEN-LAST:event_txtComplementoKeyReleased
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
+        txtNome.setBackground(Color.lightGray);
+        
+    }//GEN-LAST:event_txtNomeFocusGained
+
+    private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
+        txtNome.setBackground(Color.white);
+    }//GEN-LAST:event_txtNomeFocusLost
+
+    private void formtxtCPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCPFFocusGained
+        formtxtCPF.setBackground(Color.lightGray);
+    }//GEN-LAST:event_formtxtCPFFocusGained
+
+    private void formtxtCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCPFFocusLost
+        formtxtCPF.setBackground(Color.white);
+    }//GEN-LAST:event_formtxtCPFFocusLost
+
+    private void formtxtFoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtFoneFocusGained
+        formtxtFone.setBackground(Color.lightGray);
+    }//GEN-LAST:event_formtxtFoneFocusGained
+
+    private void formtxtFoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtFoneFocusLost
+        formtxtFone.setBackground(Color.white);
+    }//GEN-LAST:event_formtxtFoneFocusLost
+
+    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
+        txtEmail.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtEmailFocusGained
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        txtEmail.setBackground(Color.white);
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void txtEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoFocusGained
+        txtEndereco.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtEnderecoFocusGained
+
+    private void txtEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoFocusLost
+        txtEndereco.setBackground(Color.white);
+    }//GEN-LAST:event_txtEnderecoFocusLost
+
+    private void txtNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusGained
+        txtNumero.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtNumeroFocusGained
+
+    private void txtNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusLost
+        txtNumero.setBackground(Color.white);
+    }//GEN-LAST:event_txtNumeroFocusLost
+
+    private void txtBairroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusGained
+        txtBairro.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtBairroFocusGained
+
+    private void txtBairroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusLost
+        txtBairro.setBackground(Color.white);
+    }//GEN-LAST:event_txtBairroFocusLost
+
+    private void txtCidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusGained
+        txtCidade.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtCidadeFocusGained
+
+    private void txtCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusLost
+        txtCidade.setBackground(Color.white);
+    }//GEN-LAST:event_txtCidadeFocusLost
+
+    private void txtComplementoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtComplementoFocusGained
+        txtComplemento.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtComplementoFocusGained
+
+    private void txtComplementoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtComplementoFocusLost
+        txtComplemento.setBackground(Color.white);
+    }//GEN-LAST:event_txtComplementoFocusLost
+
+    private void formtxtCEPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCEPFocusGained
+        formtxtCEP.setBackground(Color.lightGray);
+    }//GEN-LAST:event_formtxtCEPFocusGained
+
+    private void formtxtCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCEPFocusLost
+        formtxtCEP.setBackground(Color.white);
+    }//GEN-LAST:event_formtxtCEPFocusLost
+
+    private void cboEstadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboEstadoFocusGained
+        cboEstado.setBackground(Color.lightGray);
+    }//GEN-LAST:event_cboEstadoFocusGained
+
+    private void cboEstadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboEstadoFocusLost
+        cboEstado.setBackground(Color.white);
+    }//GEN-LAST:event_cboEstadoFocusLost
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void formtxtCPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formtxtCPFKeyTyped
+        
+    }//GEN-LAST:event_formtxtCPFKeyTyped
 
     /**
      * @param args the command line arguments
