@@ -450,35 +450,31 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         //EXLUINDO LINHA
-        int  linhaSelecionada = tblClientes.getSelectedRow();
-       //-1 é o valor quando não seleciono nada
-       if(linhaSelecionada == -1){
-           JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
-       }else{
-           DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
-           modelo.removeRow(linhaSelecionada);
-       }
+        int linhaSelecionada = tblClientes.getSelectedRow();
+        //-1 é o valor quando não seleciono nada
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
+        } else {
+            DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+            modelo.removeRow(linhaSelecionada);
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        
+
         //COLOCANCO ITENS NA TABELA
         String nome = txtNome.getText();
         String CPF = formtxtCPF.getText();
         String fone = formtxtFone.getText();
         String email = txtEmail.getText();
         String sistemaSexo = "";
-        if(cboSexo.getSelectedIndex()>0){
+        if (cboSexo.getSelectedIndex() > 0) {
             sistemaSexo = cboSexo.getSelectedItem().toString();
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Preencha o Sexo!");
         }
         String sistemaCivil = "";
-        if(cboEstadoCivil.getSelectedIndex()>0){
+        if (cboEstadoCivil.getSelectedIndex() > 0) {
             sistemaCivil = cboEstadoCivil.getSelectedItem().toString();
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Preencha o Estado Civil!");
-        }
+        } 
         String endereco = txtEndereco.getText();
         String numero = txtNumero.getText();
         String bairro = txtBairro.getText();
@@ -486,59 +482,52 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         String complemento = txtComplemento.getText();
         String cep = formtxtCEP.getText();
         String estado = cboEstado.getSelectedItem().toString();
-                
+
+        if (nome.strip().isEmpty() || CPF.strip().isEmpty() || fone.strip().isEmpty()
+                || email.strip().isEmpty() || endereco.strip().isEmpty() || numero.strip().isEmpty()
+                || bairro.strip().isEmpty() || cidade.strip().isEmpty() || complemento.strip().isEmpty()
+                || cep.strip().isEmpty() || sistemaSexo.isEmpty() || sistemaCivil.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos obrigatórios!");
+            return; // Se algum campo obrigatório estiver vazio, não prossiga
+        }
         DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
         modelo.addRow(new String[]{nome, CPF, fone, email, sistemaSexo, sistemaCivil, endereco, numero, bairro, cidade, complemento, cep, estado});
-        
-       
 
         //MENSAGEM PAGA USUARIO
-        if(txtNome.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha o nome!");
+
+        boolean todosCamposPreenchidos = !txtNome.getText().strip().isEmpty()
+                && !formtxtCPF.getText().strip().isEmpty()
+                && !formtxtFone.getText().strip().isEmpty()
+                && !txtEmail.getText().strip().isEmpty()
+                && !txtEndereco.getText().strip().isEmpty()
+                && !txtNumero.getText().strip().isEmpty()
+                && !txtBairro.getText().strip().isEmpty()
+                && !txtCidade.getText().strip().isEmpty()
+                && !txtComplemento.getText().strip().isEmpty()
+                && cboEstado.getSelectedIndex() > 0
+                && cboEstadoCivil.getSelectedIndex() > 0
+                && cboSexo.getSelectedIndex() > 0
+                && !formtxtCEP.getText().strip().isEmpty();
+
+        if (todosCamposPreenchidos) {
+            // Limpar os campos após adicionar o produto
+            txtBairro.setText("");
+            txtCidade.setText("");
+            txtComplemento.setText("");
+            txtNumero.setText("");
+            txtEndereco.setText("");
+            txtEmail.setText("");
+            txtNome.setText("");
+            formtxtCEP.setText("");
+            formtxtFone.setText("");
+            formtxtCPF.setText("");
+            cboEstado.setSelectedIndex(-1);
+            cboEstadoCivil.setSelectedIndex(-1);
+            cboSexo.setSelectedIndex(-1);
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
         }
-        if(formtxtCPF.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha o CPF!");
-        }
-        if(formtxtFone.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha o Telefone!");
-        }
-        if(txtEmail.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha o E-mail!");
-        }
-        if(txtEndereco.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha o Endereço!");
-        }
-        if(txtNumero.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha o Número!");
-        }
-        if(txtBairro.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha o Bairro!");
-        }
-        if(txtCidade.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha a Cidade!");
-        }
-        if(txtComplemento.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha o Complemento!");
-        }
-        if(formtxtCEP.getText().strip().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Preencha o CEP!");
-        }
-        // Limpar os campos após adicionar o produto
-        txtBairro.setText("");
-        txtCidade.setText("");
-        txtComplemento.setText("");
-        txtNumero.setText("");
-        txtEndereco.setText("");
-        txtEmail.setText("");
-        txtNome.setText("");
-        formtxtCEP.setText("");
-        formtxtFone.setText("");
-        formtxtCPF.setText("");
-        cboEstado.setSelectedIndex(-1);
-        cboEstadoCivil.setSelectedIndex(-1);
-        cboSexo.setSelectedIndex(-1);
-        //MENSAGEM FINAL
-        //JOptionPane.showMessageDialog(rootPane, "Cliente cadastrado com sucesso!");
+
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyReleased
