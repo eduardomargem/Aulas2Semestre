@@ -526,7 +526,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescricaoFocusGained
 
     private void txtDescricaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusLost
-        txtNome.setBackground(Color.white);
+        txtDescricao.setBackground(Color.white);
     }//GEN-LAST:event_txtDescricaoFocusLost
 
     private void txtPrecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoFocusGained
