@@ -20,6 +20,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
      */
     public TelaCadastroCliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

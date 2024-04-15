@@ -22,6 +22,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
      */
     public TelaCadastroProduto() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
