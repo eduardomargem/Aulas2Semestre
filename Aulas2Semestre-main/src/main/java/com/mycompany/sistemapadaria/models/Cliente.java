@@ -21,6 +21,8 @@ public class Cliente {
 
     //Setters
     //Setters
+    //Setters
+    //Setters
     public void setNome(String cNome) {
         this.nome = cNome;
     }
