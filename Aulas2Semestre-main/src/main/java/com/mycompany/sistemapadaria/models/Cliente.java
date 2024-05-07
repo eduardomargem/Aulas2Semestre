@@ -20,6 +20,7 @@ public class Cliente {
     private String estado;
 
     //Setters
+    //Setters
     public void setNome(String cNome) {
         this.nome = cNome;
     }
