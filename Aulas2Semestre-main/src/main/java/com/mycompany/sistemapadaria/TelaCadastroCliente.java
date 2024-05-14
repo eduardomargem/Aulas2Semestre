@@ -1,9 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
+
 package com.mycompany.sistemapadaria;
 
+import com.mycompany.sistemapadaria.models.Cliente;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -592,7 +591,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         String complemento = txtComplemento.getText();
         String cep = formtxtCEP.getText();
         String estado = cboEstado.getSelectedItem().toString();
-
+        
+        // 2) Crio o objeto da nota fiscal e passo os valores
+           Cliente novoCliente = new Cliente(nome, CPF, fone, email, sistemaSexo, sistemaCivil, endereco, numero, bairro, cidade, complemento, cep, estado);
+           //Paramos aqui 13.05.24
+           
         if (nome.strip().isEmpty() || CPF.strip().isEmpty() || fone.strip().isEmpty()
                 || email.strip().isEmpty() || endereco.strip().isEmpty() || numero.strip().isEmpty()
                 || bairro.strip().isEmpty() || cidade.strip().isEmpty() || complemento.strip().isEmpty()
@@ -600,8 +603,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos obrigatórios!");
             return; // Se algum campo obrigatório estiver vazio, não prossiga
         }
-        DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
-        modelo.addRow(new String[]{nome, CPF, fone, email, sistemaSexo, sistemaCivil, endereco, numero, bairro, cidade, complemento, cep, estado});
+       // DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+        //modelo.addRow(new String[]{nome, CPF, fone, email, sistemaSexo, sistemaCivil, endereco, numero, bairro, cidade, complemento, cep, estado});
 
         //MENSAGEM PAGA USUARIO
 
@@ -636,6 +639,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             cboSexo.setSelectedIndex(-1);
             JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
         }
+        
+        //chamar a dao
 
 
     }//GEN-LAST:event_btnCadastrarActionPerformed

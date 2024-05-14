@@ -4,9 +4,10 @@ import java.util.Date;
 
 public class Cliente {
     // Atributos da classe
+    private int idCliente;
     private String nome;
-    private int cpf;
-    private int telefone;
+    private String cpf;
+    private String telefone;
     private String email;
     private String sexo;
     private String civil;
@@ -16,123 +17,163 @@ public class Cliente {
     private String bairro;
     private String cidade;
     private String complemento;
-    private int cep;
+    private String cep;
     private String estado;
 
-    //Setters
-    //Setters
-    //Setters
-    //Setters
-    public void setNome(String cNome) {
-        this.nome = cNome;
-    }
-
-    public void setCpf(int cCpf) {
-        this.cpf = cCpf;
-    }
-
-    public void setTelefone(int cTelefone) {
-        this.telefone = cTelefone;
-    }
-
-    public void setEmail(String cEmail) {
-        this.email = cEmail;
-    }
-
-    public void setSexo(String cSexo) {
-        this.sexo = cSexo;
-    }
-
-    public void setCivil(String cCivil) {
-        this.civil = cCivil;
-    }
-
-    public void setNascimento(Date cNascimento) {
-        this.nascimento = cNascimento;
-    }
-
-    public void setEndereco(String cEndereco) {
-        this.endereco = cEndereco;
-    }
-
-    public void setNumeroCasa(int cNumeroCasa) {
-        this.numeroCasa = cNumeroCasa;
-    }
-
-    public void setBairro(String cBairro) {
-        this.bairro = cBairro;
-    }
-
-    public void setCidade(String cCidade) {
-        this.cidade = cCidade;
-    }
-
-    public void setComplemento(String cComplemento) {
-        this.complemento = cComplemento;
-    }
-
-    public void setCep(int cep) {
+    public Cliente(String nome, String cpf, String telefone, String email, String sexo, String civil, Date nascimento, String endereco, int numeroCasa, String bairro, String cidade, String complemento, String cep, String estado) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.email = email;
+        this.sexo = sexo;
+        this.civil = civil;
+        this.nascimento = nascimento;
+        this.endereco = endereco;
+        this.numeroCasa = numeroCasa;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.complemento = complemento;
         this.cep = cep;
+        this.estado = estado;
     }
-
-    public void setEstado(String estado) {
+    
+    public Cliente(int idCliente, String nome, String cpf, String telefone, String email, String sexo, String civil, Date nascimento, String endereco, int numeroCasa, String bairro, String cidade, String complemento, String cep, String estado) {
+        this.idCliente = idCliente;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.email = email;
+        this.sexo = sexo;
+        this.civil = civil;
+        this.nascimento = nascimento;
+        this.endereco = endereco;
+        this.numeroCasa = numeroCasa;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.complemento = complemento;
+        this.cep = cep;
         this.estado = estado;
     }
 
-    //Getters
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
     public String getNome() {
         return nome;
     }
 
-    public int getCpf() {
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
         return cpf;
     }
 
-    public int getTelefone() {
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getTelefone() {
         return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getSexo() {
         return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getCivil() {
         return civil;
     }
 
+    public void setCivil(String civil) {
+        this.civil = civil;
+    }
+
     public Date getNascimento() {
         return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
     }
 
     public String getEndereco() {
         return endereco;
     }
 
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
     public int getNumeroCasa() {
         return numeroCasa;
+    }
+
+    public void setNumeroCasa(int numeroCasa) {
+        this.numeroCasa = numeroCasa;
     }
 
     public String getBairro() {
         return bairro;
     }
 
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
     public String getCidade() {
         return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getComplemento() {
         return complemento;
     }
 
-    public int getCep() {
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getCep() {
         return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public String getEstado() {
         return estado;
     }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    
 }

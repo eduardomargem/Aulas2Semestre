@@ -1,69 +1,80 @@
-
+/*
 package com.mycompany.sistemapadaria.models;
 
 import java.util.Date;
 
 public class Relatorios {
      
-private int datainicio;
-    private int datadefim;
-    private int data;
+    private Date datainicio;
+    private Date datafim;
     private String cliente;
-    private int valortotal;
+    private float valortotal;
     private int codigodoproduto;
     private String nome;
     private int quantidade;
-    private int valorunitario;
-    
-    public void setDatainicio (int Datainicio){
-        this.datainicio = datainicio;
-    }
-    public void setData (int Data){
-        this.data = data;
-    }
-    public void setCliente (String Cliente){
-        this.cliente = cliente;
-    }
-    public void setValortotal (int Valortotal){
-        this.valortotal = valortotal;
-    }
-    public void setCodigoproduto (int codigoproduto){
-        this.codigodoproduto = codigoproduto;
-    }
-    public void setNome (String nome){
-        this.nome = nome;
-    }
-    public void setQuantidade (int quantidade){
-        this.quantidade = quantidade;
-    }
-    public void setValorunitario (int valorunitario){
-        this.valorunitario = valorunitario;
-    }
-    public int getDatainicio(){
+    private dou valorunitario;
+
+    public Date getDatainicio() {
         return datainicio;
     }
-    public String getNome(){
-        return nome;
+
+    public void setDatainicio(Date datainicio) {
+        this.datainicio = datainicio;
     }
-    public int getData(){
-        return data;
-    }
-    public String getCliente(){
-        return cliente;
-    }
-    public int getValortotal(){
-        return valortotal;
-    }
-    public int getCodigodoproduto(){
-        return codigodoproduto;
-    }
-    public int getDatadefim(){
+
+    public Date getDatadefim() {
         return datadefim;
     }
-    public int getQuantidade(){
+
+    public void setDatadefim(Date datadefim) {
+        this.datadefim = datadefim;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public int getValortotal() {
+        return valortotal;
+    }
+
+    public void setValortotal(int valortotal) {
+        this.valortotal = valortotal;
+    }
+
+    public int getCodigodoproduto() {
+        return codigodoproduto;
+    }
+
+    public void setCodigodoproduto(int codigodoproduto) {
+        this.codigodoproduto = codigodoproduto;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getQuantidade() {
         return quantidade;
     }
-    public int getValorunitario(){
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public int getValorunitario() {
         return valorunitario;
     }
-}    
+
+    public void setValorunitario(int valorunitario) {
+        this.valorunitario = valorunitario;
+    }
+} */
