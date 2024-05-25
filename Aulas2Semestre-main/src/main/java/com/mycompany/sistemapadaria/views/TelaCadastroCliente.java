@@ -622,7 +622,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
         //COLOCANCO ITENS NA TABELA
-        String nome = jFormattedTextField1.getText();
+        String nome = txtNome.getText();
         String CPF = formtxtCPF.getText();
         String fone = formtxtFone.getText();
         String email = txtEmail.getText();
@@ -658,7 +658,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         //MENSAGEM PAGA USUARIO
 
-        boolean todosCamposPreenchidos = !jFormattedTextField1.getText().strip().isEmpty()
+        boolean todosCamposPreenchidos = !txtNome.getText().strip().isEmpty()
                 && !formtxtCPF.getText().strip().isEmpty()
                 && !formtxtFone.getText().strip().isEmpty()
                 && !txtEmail.getText().strip().isEmpty()
@@ -680,7 +680,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             txtNumero.setText("");
             txtEndereco.setText("");
             txtEmail.setText("");
-            jFormattedTextField1.setText("");
+            txtNome.setText("");
             formtxtCEP.setText("");
             formtxtFone.setText("");
             formtxtCPF.setText("");
