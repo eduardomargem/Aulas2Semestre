@@ -5,6 +5,7 @@
 package com.mycompany.sistemapadaria.views;
 
 
+import com.mycompany.sistemapadaria.models.Produto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +18,7 @@ import java.awt.Color;
  */
 public class TelaCadastroProduto extends javax.swing.JFrame {
 
+    Produto alteraProduto = null;
     /**
      * Creates new form TelaCadastroProduto
      */
@@ -52,12 +54,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         lblVolume = new javax.swing.JLabel();
         txtObservacoes = new javax.swing.JTextField();
         lblObservacoes = new javax.swing.JLabel();
-        rboKg = new javax.swing.JRadioButton();
-        rboLitro = new javax.swing.JRadioButton();
-        rboCaixa = new javax.swing.JRadioButton();
-        rboPorcao = new javax.swing.JRadioButton();
-        rboPacote = new javax.swing.JRadioButton();
-        rboUnidade = new javax.swing.JRadioButton();
         lblDataNascimento = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         btnExcluir = new javax.swing.JButton();
@@ -65,6 +61,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         jProgressBar1 = new javax.swing.JProgressBar();
         jSeparator2 = new javax.swing.JSeparator();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProduto = new javax.swing.JTable();
@@ -72,12 +69,12 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         btnAlterar = new javax.swing.JButton();
         btnExcluir1 = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        txtNome1 = new javax.swing.JTextField();
+        lblcategoria = new javax.swing.JLabel();
+        txtCategoria = new javax.swing.JTextField();
         btnNome = new javax.swing.JButton();
-        txtCPF = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblValidade = new javax.swing.JLabel();
         btnCPF = new javax.swing.JButton();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -151,7 +148,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
-        cboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione ", "Doces", "Salgados", "Bebidas" }));
+        cboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Doces", "Salgados", "Bebidas" }));
         cboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboCategoriaActionPerformed(evt);
@@ -172,18 +169,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         });
 
         lblObservacoes.setText("Observações:");
-
-        rboKg.setText("Kg");
-
-        rboLitro.setText("Litro");
-
-        rboCaixa.setText("Caixa");
-
-        rboPorcao.setText("Porção");
-
-        rboPacote.setText("Pacote");
-
-        rboUnidade.setText("Unidade");
 
         lblDataNascimento.setText("Data de Validade:");
 
@@ -208,6 +193,8 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "KG", "Litro", "Caixa", "Porção", "Pacote", "Unidade" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -218,9 +205,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(lblObservacoes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtObservacoes)
-                        .addGap(106, 106, 106))
+                        .addGap(106, 576, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDescricao)
@@ -228,37 +213,23 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                             .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCategoria))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(74, 74, 74))))
-                    .addComponent(lblCadastroProduto)
+                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCategoria)
+                            .addComponent(lblVolume))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(cboCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(61, 61, 61))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblVolume)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rboKg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rboLitro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rboCaixa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rboPorcao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rboPacote)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rboUnidade))
+                        .addComponent(lblCadastroProduto)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,7 +238,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(txtObservacoes)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -296,19 +270,12 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPreco)
-                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblVolume)
-                    .addComponent(rboKg)
-                    .addComponent(rboLitro)
-                    .addComponent(rboCaixa)
-                    .addComponent(rboPorcao)
-                    .addComponent(rboPacote)
-                    .addComponent(rboUnidade))
-                .addGap(18, 18, 18)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblObservacoes)
                     .addComponent(txtObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -333,7 +300,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Descrição", "Preço", "Categoria", "Volume", "Observações"
+                "ID", "Nome", "Descrição", "Preço", "Categoria", "Validade", "Volume", "Observações"
             }
         ));
         jScrollPane1.setViewportView(tblProduto);
@@ -366,13 +333,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Nome:");
+        lblcategoria.setBackground(new java.awt.Color(0, 0, 0));
+        lblcategoria.setText("Categoria:");
 
         btnNome.setText("Pesquisar");
 
-        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("CPF:");
+        lblValidade.setBackground(new java.awt.Color(0, 0, 0));
+        lblValidade.setText("Validade:");
 
         btnCPF.setText("Pesquisar");
         btnCPF.addActionListener(new java.awt.event.ActionListener() {
@@ -390,41 +357,40 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCPF)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblcategoria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblValidade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(btnCPF)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(btnNome)
-                    .addComponent(btnCPF))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblcategoria)
+                        .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblValidade)
+                        .addComponent(btnNome)
+                        .addComponent(btnCPF))
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -442,13 +408,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(149, 149, 149)
+                .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jTabbedPane1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,133 +443,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int linha = tblProduto.getSelectedRow();
-
-        if (linha == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Por favor, Selecione a linha!");
-        } else {
-            DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
-            modelo.removeRow(linha);
-        }
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
-    private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecoActionPerformed
-
-    private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescricaoActionPerformed
-
-    private void txtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyReleased
-        txtNome.setText(txtNome.getText().toUpperCase());
-    }//GEN-LAST:event_txtNomeKeyReleased
-
-    private void txtDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyReleased
-        txtDescricao.setText(txtDescricao.getText().toUpperCase());
-    }//GEN-LAST:event_txtDescricaoKeyReleased
-
-
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-
-        String nomeProduto = txtNome.getText();
-        
-        String descricao = txtDescricao.getText();
-        
-
-        String opCategoria = "";
-        if (cboCategoria.getSelectedIndex() > 0) {
-            opCategoria = cboCategoria.getSelectedItem().toString();
-        }
-        String opVolume = "";
-
-        if (rboKg.isSelected()) {
-            opVolume = rboKg.getText();
-        } else if (rboLitro.isSelected()) {
-            opVolume = rboLitro.getText();
-        } else if (rboCaixa.isSelected()) {
-            opVolume = rboCaixa.getText();
-        } else if (rboPorcao.isSelected()) {
-            opVolume = rboPorcao.getText();
-        } else if (rboPacote.isSelected()) {
-            opVolume = rboPacote.getText();
-        } else if (rboUnidade.isSelected()) {
-            opVolume = rboUnidade.getText();
-        } 
-        String observacoes = txtObservacoes.getText();
-        String preco = txtPreco.getText();
-        
-        if (!rboKg.isSelected() && !rboLitro.isSelected() && !rboCaixa.isSelected() &&
-            !rboPorcao.isSelected() && !rboPacote.isSelected() && !rboUnidade.isSelected()) {
-        JOptionPane.showMessageDialog(rootPane, "Selecione todos os campos obrigatórios!");
-        return;
-    }
-        DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
-        modelo.addRow(new String[]{nomeProduto, descricao, preco, opCategoria, opVolume, observacoes});
-        
-        boolean todosOsCamposPreenchidos = !nomeProduto.isEmpty() && !descricao.isEmpty() &&
-                                       cboCategoria.getSelectedIndex() > 0 && !opVolume.isEmpty();
-
-       if(todosOsCamposPreenchidos){
-            //LIMPEZA DE CAMPOS APÓS CADASTRO
-        txtNome.setText("");
-        txtDescricao.setText("");
-        txtObservacoes.setText("");
-        txtPreco.setText("");
-        cboCategoria.setSelectedIndex(-1);
-        rboCaixa.setSelected(false);
-        rboKg.setSelected(false);
-        rboLitro.setSelected(false);
-        rboPacote.setSelected(false);
-        rboPorcao.setSelected(false);
-        rboUnidade.setSelected(false);
-        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-       }
-        
-
-        
-    }//GEN-LAST:event_btnCadastrarActionPerformed
-
-    private void cboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboCategoriaActionPerformed
-
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
-    private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
-        txtNome.setBackground(Color.lightGray);
-    }//GEN-LAST:event_txtNomeFocusGained
-
-    private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
-        txtNome.setBackground(Color.white);
-    }//GEN-LAST:event_txtNomeFocusLost
-
-    private void txtDescricaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusGained
-        txtDescricao.setBackground(Color.lightGray);
-    }//GEN-LAST:event_txtDescricaoFocusGained
-
-    private void txtDescricaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusLost
-        txtDescricao.setBackground(Color.white);
-    }//GEN-LAST:event_txtDescricaoFocusLost
-
-    private void txtPrecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoFocusGained
-        txtPreco.setBackground(Color.lightGray);
-    }//GEN-LAST:event_txtPrecoFocusGained
-
-    private void txtPrecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoFocusLost
-        txtPreco.setBackground(Color.white);
-    }//GEN-LAST:event_txtPrecoFocusLost
-
-    private void txtObservacoesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtObservacoesFocusGained
-        txtObservacoes.setBackground(Color.lightGray);
-    }//GEN-LAST:event_txtObservacoesFocusGained
-
-    private void txtObservacoesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtObservacoesFocusLost
-        txtObservacoes.setBackground(Color.white);
-    }//GEN-LAST:event_txtObservacoesFocusLost
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // TODO add your handling code here:
@@ -631,6 +470,136 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void btnCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCPFActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        if(this.alteraProduto == null){
+            String nomeProduto = txtNome.getText();
+            String descricaoProduto = txtDescricao.getText();
+            String categoriaProduto = cboCategoria.getSelectedItem().toString();
+            String volumeProduto = r.getText();
+            String observacaoProduto = txtNome.getText();
+
+        }
+
+        String descricao = txtDescricao.getText();
+
+        String opCategoria = "";
+        if (cboCategoria.getSelectedIndex() > 0) {
+            opCategoria = cboCategoria.getSelectedItem().toString();
+        }
+        String opVolume = "";
+
+        if (rboKg.isSelected()) {
+            opVolume = rboKg.getText();
+        } else if (rboLitro.isSelected()) {
+            opVolume = rboLitro.getText();
+        } else if (rboCaixa.isSelected()) {
+            opVolume = rboCaixa.getText();
+        } else if (rboPorcao.isSelected()) {
+            opVolume = rboPorcao.getText();
+        } else if (rboPacote.isSelected()) {
+            opVolume = rboPacote.getText();
+        } else if (rboUnidade.isSelected()) {
+            opVolume = rboUnidade.getText();
+        }
+        String observacoes = txtObservacoes.getText();
+        String preco = txtPreco.getText();
+
+        if (!rboKg.isSelected() && !rboLitro.isSelected() && !rboCaixa.isSelected() &&
+            !rboPorcao.isSelected() && !rboPacote.isSelected() && !rboUnidade.isSelected()) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione todos os campos obrigatórios!");
+            return;
+        }
+        DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
+        modelo.addRow(new String[]{nomeProduto, descricao, preco, opCategoria, opVolume, observacoes});
+
+        boolean todosOsCamposPreenchidos = !nomeProduto.isEmpty() && !descricao.isEmpty() &&
+        cboCategoria.getSelectedIndex() > 0 && !opVolume.isEmpty();
+
+        if(todosOsCamposPreenchidos){
+            //LIMPEZA DE CAMPOS APÓS CADASTRO
+            txtNome.setText("");
+            txtDescricao.setText("");
+            txtObservacoes.setText("");
+            txtPreco.setText("");
+            cboCategoria.setSelectedIndex(-1);
+            rboCaixa.setSelected(false);
+            rboKg.setSelected(false);
+            rboLitro.setSelected(false);
+            rboPacote.setSelected(false);
+            rboPorcao.setSelected(false);
+            rboUnidade.setSelected(false);
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+        }
+
+    }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int linha = tblProduto.getSelectedRow();
+
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, Selecione a linha!");
+        } else {
+            DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
+            modelo.removeRow(linha);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void txtObservacoesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtObservacoesFocusLost
+        txtObservacoes.setBackground(Color.white);
+    }//GEN-LAST:event_txtObservacoesFocusLost
+
+    private void txtObservacoesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtObservacoesFocusGained
+        txtObservacoes.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtObservacoesFocusGained
+
+    private void cboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboCategoriaActionPerformed
+
+    private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecoActionPerformed
+
+    private void txtPrecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoFocusLost
+        txtPreco.setBackground(Color.white);
+    }//GEN-LAST:event_txtPrecoFocusLost
+
+    private void txtPrecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoFocusGained
+        txtPreco.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtPrecoFocusGained
+
+    private void txtDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoKeyReleased
+        txtDescricao.setText(txtDescricao.getText().toUpperCase());
+    }//GEN-LAST:event_txtDescricaoKeyReleased
+
+    private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescricaoActionPerformed
+
+    private void txtDescricaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusLost
+        txtDescricao.setBackground(Color.white);
+    }//GEN-LAST:event_txtDescricaoFocusLost
+
+    private void txtDescricaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescricaoFocusGained
+        txtDescricao.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtDescricaoFocusGained
+
+    private void txtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyReleased
+        txtNome.setText(txtNome.getText().toUpperCase());
+    }//GEN-LAST:event_txtNomeKeyReleased
+
+    private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
+        txtNome.setBackground(Color.white);
+    }//GEN-LAST:event_txtNomeFocusLost
+
+    private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
+        txtNome.setBackground(Color.lightGray);
+    }//GEN-LAST:event_txtNomeFocusGained
 
 
     /**
@@ -679,11 +648,11 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> cboCategoria;
+    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -699,18 +668,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblObservacoes;
     private javax.swing.JLabel lblPreco;
+    private javax.swing.JLabel lblValidade;
     private javax.swing.JLabel lblVolume;
-    private javax.swing.JRadioButton rboCaixa;
-    private javax.swing.JRadioButton rboKg;
-    private javax.swing.JRadioButton rboLitro;
-    private javax.swing.JRadioButton rboPacote;
-    private javax.swing.JRadioButton rboPorcao;
-    private javax.swing.JRadioButton rboUnidade;
+    private javax.swing.JLabel lblcategoria;
     private javax.swing.JTable tblProduto;
-    private javax.swing.JTextField txtCPF;
+    private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtNome1;
     private javax.swing.JTextField txtObservacoes;
     private javax.swing.JTextField txtPreco;
     // End of variables declaration//GEN-END:variables
