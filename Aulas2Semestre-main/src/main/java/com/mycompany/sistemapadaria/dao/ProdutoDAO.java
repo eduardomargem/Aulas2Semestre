@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  */
 public class ProdutoDAO {
 
-    public static String url = "jdbc:mysql://localhost:3306/sistemaPadaria";
+    public static String url = "jdbc:mysql://localhost:3306/sistemapadaria";
     public static String usuario = "root";
-    public static String senha = "";
+    public static String senha = "admin";
 
     public static boolean cadastrar(Produto obj) {
         boolean retorno = false;
@@ -67,13 +67,13 @@ public class ProdutoDAO {
         Connection conexao = null;
 
         try {
-            // 1) Carregar o Driver
+           
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // 2) Abrir conexão
+        
             conexao = DriverManager.getConnection(url, usuario, senha);
 
-            // 3) Preparar o comando SQL
-            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE produto SET idProduto = ?, nomeProduto = ?, descricaoProduto = ?, precoProduto = ?, categoriaProduto = ?, validadeProduto = ?, volumeProduto = ?, observacaoProduto = ? WHERE idProduto = ?");
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE produto SET nomeProduto = ?, descricaoProduto = ?, precoProduto = ?, categoriaProduto = ?, validadeProduto = ?, volumeProduto = ?, observacaoProduto = ? WHERE idProduto = ?");
             comandoSQL.setString(1, obj.getNomeProduto());
             comandoSQL.setString(2, obj.getDescricaoProduto());
             comandoSQL.setFloat(3, obj.getPrecoProduto());
@@ -82,12 +82,11 @@ public class ProdutoDAO {
             comandoSQL.setString(6, obj.getVolumeProduto());
             comandoSQL.setString(7, obj.getObservacaoProduto());
             comandoSQL.setInt(8, obj.getIdProduto());
-            // 4) Passar parâmetros para o comando SQL
-            // 5) Executar o comando
+          
             int linhasAfetadas = comandoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                // Gravou com sucesso!
+              
                 retorno = true;
             }
         } catch (ClassNotFoundException ex) {
@@ -99,25 +98,23 @@ public class ProdutoDAO {
         return retorno;
     }
 
-    public static boolean excluir(Produto obj) {
+    public static boolean excluir(int idExcluir) {
         boolean retorno = false;
         Connection conexao = null;
 
         try {
-            // 1) Carregar o Driver
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // 2) Abrir conexão
+            
             conexao = DriverManager.getConnection(url, usuario, senha);
-
-            // 3) Preparar o comando SQL
-            PreparedStatement comandoSQL = conexao.prepareStatement("DELETE produto WHERE idProduto = ?");
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("DELETE FROM produto WHERE idProduto = ?");
             comandoSQL.setInt(1, idExcluir);
-            // 4) Passar parâmetros para o comando SQL
-            // 5) Executar o comando
+            
             int linhasAfetadas = comandoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                // Gravou com sucesso!
+                
                 retorno = true;
             }
         } catch (ClassNotFoundException ex) {
@@ -133,17 +130,16 @@ public class ProdutoDAO {
         ArrayList<Produto> lstProduto = new ArrayList<>();
         Connection conexao = null;
         ResultSet rs = null;
-        try {
-            // SEGUINDO OS PASSOS DA PRIMEIRA PARTE
-            //1) PASSO
+        try {        
+         
             Class.forName("com.mysql.cj.jdbc.Driver");
-            //2) PASSO
+            
             conexao = DriverManager.getConnection(url, usuario, senha);
-            //3) PASSO
+            
             PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produto");
-            //5) PASSO
+            
             rs = comandoSQL.executeQuery();
-            // ENQUANTO HOUVER LINHAS NO RESULTSET, ADICIONO UM OBJETO NA LISTA DE RETORNO
+            
             while (rs.next()) {
                 int id = rs.getInt("idProduto");
                 String nome = rs.getString("nomeProduto");
@@ -165,21 +161,21 @@ public class ProdutoDAO {
         return lstProduto;
     }
 
-    public static ArrayList<Produto> buscarCategoria(Produto obj) {
+    public static ArrayList<Produto> buscarCategoria(String categoriaProduto) {
         ArrayList<Produto> lstProduto = new ArrayList<>();
         Connection conexao = null;
         ResultSet rs = null;
         try {
-            // SEGUINDO OS PASSOS DA PRIMEIRA PARTE
-            //1) PASSO
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
-            //2) PASSO
+           
             conexao = DriverManager.getConnection(url, usuario, senha);
-            //3) PASSO
+            
             PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE categoriaProduto = ?");
-            //5) PASSO
+            
+            comandoSQL.setString(1, categoriaProduto);
             rs = comandoSQL.executeQuery();
-            // ENQUANTO HOUVER LINHAS NO RESULTSET, ADICIONO UM OBJETO NA LISTA DE RETORNO
+            
             while (rs.next()) {
                 int id = rs.getInt("idProduto");
                 String nome = rs.getString("nomeProduto");
@@ -201,21 +197,21 @@ public class ProdutoDAO {
         return lstProduto;
     }
     
-    public static ArrayList<Produto> buscarValidade(Produto obj){
+    public static ArrayList<Produto> buscarValidade(Date validadeProduto){
         ArrayList<Produto> lstProduto = new ArrayList<>();
         Connection conexao = null;
         ResultSet rs = null;
         try {
-            // SEGUINDO OS PASSOS DA PRIMEIRA PARTE
-            //1) PASSO
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
-            //2) PASSO
+            
             conexao = DriverManager.getConnection(url, usuario, senha);
-            //3) PASSO
-            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE ValidadeProduto = ?");
-            //5) PASSO
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE validadeProduto = ?");
+            
+            comandoSQL.setDate(1,new java.sql.Date( validadeProduto.getTime()));
             rs = comandoSQL.executeQuery();
-            // ENQUANTO HOUVER LINHAS NO RESULTSET, ADICIONO UM OBJETO NA LISTA DE RETORNO
+            
             while (rs.next()) {
                 int id = rs.getInt("idProduto");
                 String nome = rs.getString("nomeProduto");

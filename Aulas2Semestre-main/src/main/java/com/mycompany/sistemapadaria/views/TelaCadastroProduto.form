@@ -52,7 +52,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlGuiasProduto" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -71,7 +71,7 @@
                       <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                  <Component id="pnlGuiasProduto" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -95,7 +95,7 @@
             </Property>
           </Properties>
         </Component>
-        <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+        <Container class="javax.swing.JTabbedPane" name="pnlGuiasProduto">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -104,7 +104,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel3">
+            <Container class="javax.swing.JPanel" name="pnlCadastroProduto">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ee" green="ef" red="ff" type="rgb"/>
@@ -121,15 +121,18 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <Component id="lblObservacoes" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtObservacoes" min="-2" pref="549" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblObservacoes" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="106" pref="576" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblDescricao" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblPreco" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -143,36 +146,30 @@
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblDataNascimento" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="lblCategoria" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblVolume" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblVolume" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCategoria" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblDataNascimento" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jComboBox1" max="32767" attributes="0"/>
-                                      <Component id="jDateChooser1" alignment="0" pref="142" max="32767" attributes="0"/>
-                                      <Component id="cboCategoria" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jdcValidade" alignment="0" pref="186" max="32767" attributes="0"/>
+                                      <Component id="cboVolume" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cboCategoria" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblCadastroProduto" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="btnVoltar" min="-2" pref="157" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="btnExcluir" min="-2" pref="157" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnCadastrar" min="-2" pref="157" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jProgressBar1" alignment="0" max="32767" attributes="0"/>
                               <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                  <Component id="txtObservacoes" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="lblCadastroProduto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -194,6 +191,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblDataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -202,10 +200,7 @@
                                       <Component id="cboCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblDataNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jdcValidade" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -213,23 +208,22 @@
                               <Component id="lblPreco" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPreco" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblVolume" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboVolume" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblObservacoes" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtObservacoes" min="-2" pref="51" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblObservacoes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtObservacoes" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
+                          <EmptySpace pref="19" max="32767" attributes="0"/>
                           <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jProgressBar1" min="-2" pref="5" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnCadastrar" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="btnExcluir" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                               <Component id="btnVoltar" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -255,12 +249,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblNome">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nome:"/>
+                    <Property name="text" type="java.lang.String" value="Nome *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDescricao">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
+                    <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtDescricao">
@@ -273,7 +267,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPreco">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
+                    <Property name="text" type="java.lang.String" value="Pre&#xe7;o *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPreco">
@@ -303,20 +297,21 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCategoria">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Categoria:"/>
+                    <Property name="text" type="java.lang.String" value="Categoria *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblVolume">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Volume:"/>
+                    <Property name="text" type="java.lang.String" value="Volume *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtObservacoes">
                   <Events>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtObservacoesFocusGained"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtObservacoesFocusLost"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtObservacoesActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblObservacoes">
@@ -326,18 +321,10 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDataNascimento">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Data de Validade:"/>
+                    <Property name="text" type="java.lang.String" value="Data de Validade *"/>
                   </Properties>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
-                </Component>
-                <Component class="javax.swing.JButton" name="btnExcluir">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Excluir"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
-                  </Events>
+                <Component class="com.toedter.calendar.JDateChooser" name="jdcValidade">
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCadastrar">
                   <Properties>
@@ -359,7 +346,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator2">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="cboVolume">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="7">
@@ -379,7 +366,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel4">
+            <Container class="javax.swing.JPanel" name="pnlConsultaProduto">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ee" green="ef" red="ff" type="rgb"/>
@@ -403,7 +390,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="btnSair" min="-2" pref="157" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnExcluir1" min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Component id="btnExcluir" min="-2" pref="157" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnAlterar" min="-2" pref="157" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -415,13 +402,13 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtCategoria" min="-2" pref="152" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnNome" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCategoria" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="lblValidade" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jDateChooser2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="btnCPF" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jdcValidadeConsulta" min="-2" pref="164" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnValidade" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -437,17 +424,17 @@
                                   <Component id="lblcategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblValidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnValidade" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jDateChooser2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jdcValidadeConsulta" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="271" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnSair" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="btnExcluir1" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="btnExcluir" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                               <Component id="btnAlterar" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                               <Component id="btnListar" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
@@ -530,12 +517,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnExcluir1">
+                <Component class="javax.swing.JButton" name="btnExcluir">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Excluir"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluir1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSair">
@@ -555,11 +542,17 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCategoria">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCategoriaActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnNome">
+                <Component class="javax.swing.JButton" name="btnCategoria">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Pesquisar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCategoriaActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblValidade">
                   <Properties>
@@ -569,15 +562,15 @@
                     <Property name="text" type="java.lang.String" value="Validade:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnCPF">
+                <Component class="javax.swing.JButton" name="btnValidade">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Pesquisar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCPFActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnValidadeActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+                <Component class="com.toedter.calendar.JDateChooser" name="jdcValidadeConsulta">
                 </Component>
               </SubComponents>
             </Container>

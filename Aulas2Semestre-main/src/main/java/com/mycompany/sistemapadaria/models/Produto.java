@@ -12,6 +12,26 @@ public class Produto {
     private String volumeProduto;
     private String observacaoProduto;
 
+    public Produto(int idProduto, String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, String volumeProduto, String observacaoProduto) {
+        this.idProduto = idProduto;
+        this.nomeProduto = nomeProduto;
+        this.descricaoProduto = descricaoProduto;
+        this.precoProduto = precoProduto;
+        this.categoriaProduto = categoriaProduto;
+        this.volumeProduto = volumeProduto;
+        this.observacaoProduto = observacaoProduto;
+    }
+
+    public Produto(String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, String observacaoProduto) {
+        this.nomeProduto = nomeProduto;
+        this.descricaoProduto = descricaoProduto;
+        this.precoProduto = precoProduto;
+        this.categoriaProduto = categoriaProduto;
+        this.validadeProduto = validadeProduto;
+        this.volumeProduto = volumeProduto;
+        this.observacaoProduto = observacaoProduto;
+    }
+
     public Produto(int idProduto, String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, String observacaoProduto) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
@@ -26,7 +46,10 @@ public class Produto {
     public String getNomeProduto() {
         return nomeProduto;
     }
-
+    public void setNomeProduto(String nomeProduto){
+        this.nomeProduto = nomeProduto;
+    }
+    
     public int getIdProduto() {
         return idProduto;
     }
