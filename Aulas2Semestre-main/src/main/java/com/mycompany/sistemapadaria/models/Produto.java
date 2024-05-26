@@ -3,6 +3,7 @@ package com.mycompany.sistemapadaria.models;
 import java.util.Date;
 
 public class Produto {
+
     private int idProduto;
     private String nomeProduto;
     private String descricaoProduto;
@@ -10,29 +11,32 @@ public class Produto {
     private String categoriaProduto;
     private Date validadeProduto;
     private String volumeProduto;
+    private int quantidadeProduto;
     private String observacaoProduto;
 
-    public Produto(int idProduto, String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, String volumeProduto, String observacaoProduto) {
+    public Produto(int idProduto, String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, String volumeProduto, int quantidadeProduto,String observacaoProduto) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
         this.precoProduto = precoProduto;
         this.categoriaProduto = categoriaProduto;
         this.volumeProduto = volumeProduto;
+        this.quantidadeProduto = quantidadeProduto;
         this.observacaoProduto = observacaoProduto;
     }
 
-    public Produto(String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, String observacaoProduto) {
+    public Produto(String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, int quantidadeProduto,String observacaoProduto) {
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
         this.precoProduto = precoProduto;
         this.categoriaProduto = categoriaProduto;
         this.validadeProduto = validadeProduto;
         this.volumeProduto = volumeProduto;
+        this.quantidadeProduto = quantidadeProduto;
         this.observacaoProduto = observacaoProduto;
     }
 
-    public Produto(int idProduto, String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, String observacaoProduto) {
+    public Produto(int idProduto, String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, int quantidadeProduto, String observacaoProduto) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
@@ -40,16 +44,26 @@ public class Produto {
         this.categoriaProduto = categoriaProduto;
         this.validadeProduto = validadeProduto;
         this.volumeProduto = volumeProduto;
+        this.quantidadeProduto = quantidadeProduto;
         this.observacaoProduto = observacaoProduto;
+    }
+
+    public int getQuantidadeProduto() {
+        return quantidadeProduto;
+    }
+
+    public void setQuantidadeProduto(int quantidadeProduto) {
+        this.quantidadeProduto = quantidadeProduto;
     }
 
     public String getNomeProduto() {
         return nomeProduto;
     }
-    public void setNomeProduto(String nomeProduto){
+
+    public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
     }
-    
+
     public int getIdProduto() {
         return idProduto;
     }
@@ -106,5 +120,4 @@ public class Produto {
         this.observacaoProduto = observacaoProduto;
     }
 
-  
 }

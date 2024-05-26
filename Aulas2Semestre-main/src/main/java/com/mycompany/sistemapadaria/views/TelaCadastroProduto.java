@@ -65,6 +65,8 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         jSeparator2 = new javax.swing.JSeparator();
         cboVolume = new javax.swing.JComboBox<>();
+        lblQuantidade = new javax.swing.JLabel();
+        txtQuantidade = new javax.swing.JTextField();
         pnlConsultaProduto = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProduto = new javax.swing.JTable();
@@ -196,6 +198,22 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         cboVolume.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "KG", "Litro", "Caixa", "Porção", "Pacote", "Unidade" }));
 
+        lblQuantidade.setText("Quantidade *");
+
+        txtQuantidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtQuantidadeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtQuantidadeFocusLost(evt);
+            }
+        });
+        txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantidadeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlCadastroProdutoLayout = new javax.swing.GroupLayout(pnlCadastroProduto);
         pnlCadastroProduto.setLayout(pnlCadastroProdutoLayout);
         pnlCadastroProdutoLayout.setHorizontalGroup(
@@ -212,14 +230,16 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                     .addGroup(pnlCadastroProdutoLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDescricao)
                             .addComponent(lblPreco, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblQuantidade, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDescricao, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(txtPreco, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(txtQuantidade))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblVolume, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -272,8 +292,12 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                     .addComponent(lblVolume)
                     .addComponent(cboVolume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblQuantidade)
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblObservacoes)
                     .addComponent(txtObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -297,9 +321,17 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Descrição", "Preço", "Categoria", "Validade", "Volume", "Observações"
+                "ID", "Nome", "Descrição", "Preço", "Categoria", "Validade", "Volume", "Quantidade", "OBS"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblProduto);
 
         btnListar.setText("Listar");
@@ -472,6 +504,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 String.valueOf(item.getCategoriaProduto()),
                 String.valueOf(formatador.format(item.getValidadeProduto())),
                 String.valueOf(item.getVolumeProduto()),
+                String.valueOf(item.getQuantidadeProduto()),
                 String.valueOf(item.getObservacaoProduto())
             });
         }
@@ -496,9 +529,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 ex.printStackTrace(); // Trate a exceção adequadamente
             }
             String volumeProduto = modeloProduto.getValueAt(linhaSelecionada, 6).toString();
-            String observacaoProduto = modeloProduto.getValueAt(linhaSelecionada, 7).toString();
+            int quantidadeProduto = Integer.parseInt(modeloProduto.getValueAt(linhaSelecionada, 7).toString());
+            String observacaoProduto = modeloProduto.getValueAt(linhaSelecionada, 8).toString();
 
-            alteraProduto = new Produto(id, nomeProduto, descricaoProduto, precoProduto, categoriaProduto, dataValidade, volumeProduto, observacaoProduto);
+            alteraProduto = new Produto(id, nomeProduto, descricaoProduto, precoProduto, categoriaProduto, dataValidade, volumeProduto,quantidadeProduto, observacaoProduto);
 
             pnlGuiasProduto.setSelectedIndex(0);
             txtNome.setText(alteraProduto.getNomeProduto());
@@ -507,6 +541,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             txtObservacoes.setText(alteraProduto.getObservacaoProduto());
             cboCategoria.setSelectedItem(alteraProduto.getCategoriaProduto());
             cboVolume.setSelectedItem(alteraProduto.getVolumeProduto());
+            txtQuantidade.setText(String.valueOf(alteraProduto.getQuantidadeProduto()));
             jdcValidade.setDate(alteraProduto.getValidadeProduto());
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
@@ -557,6 +592,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                     String.valueOf(item.getCategoriaProduto()),
                     String.valueOf(formatador.format(item.getValidadeProduto())),
                     String.valueOf(item.getVolumeProduto()),
+                    String.valueOf(item.getQuantidadeProduto()),
                     String.valueOf(item.getObservacaoProduto())
                 });
             }
@@ -571,7 +607,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         if (txtNome.getText().isEmpty() || txtDescricao.getText().isEmpty() || txtPreco.getText().isEmpty()
                 || cboCategoria.getSelectedItem() == null || jdcValidade.getDate() == null
-                || cboVolume.getSelectedItem() == null || txtObservacoes.getText().isEmpty()) {
+                || cboVolume.getSelectedItem() == null || txtQuantidade.getText().isEmpty() || txtObservacoes.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos antes de continuar.");
         } else {
             if (this.alteraProduto == null) {
@@ -581,9 +617,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 String categoriaProduto = cboCategoria.getSelectedItem().toString();
                 Date dataValidade = jdcValidade.getDate();
                 String volumeProduto = cboVolume.getSelectedItem().toString();
+                int quantidadeProduto = Integer.parseInt(txtQuantidade.getText());
                 String observacaoProduto = txtObservacoes.getText();
 
-                Produto novoProduto = new Produto(nomeProduto, descricaoProduto, precoProduto, categoriaProduto, dataValidade, volumeProduto, observacaoProduto);
+                Produto novoProduto = new Produto(nomeProduto, descricaoProduto, precoProduto, categoriaProduto, dataValidade, volumeProduto, quantidadeProduto, observacaoProduto);
                 boolean retorno = ProdutoDAO.cadastrar(novoProduto);
                 if (retorno) {
                     JOptionPane.showMessageDialog(rootPane, "Produto cadastrado com sucesso!");
@@ -593,6 +630,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                     cboCategoria.setSelectedIndex(0);
                     jdcValidade.setDate(null);
                     cboVolume.setSelectedIndex(0);
+                    txtQuantidade.setText("");
                     txtObservacoes.setText("");
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar produto!");
@@ -604,6 +642,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 String categoria = cboCategoria.getSelectedItem().toString();
                 Date data = jdcValidade.getDate();
                 String volume = cboVolume.getSelectedItem().toString();
+                int quantidade = Integer.parseInt(txtQuantidade.getText());
                 String observacao = txtObservacoes.getText();
 
                 alteraProduto.setNomeProduto(nome);
@@ -612,6 +651,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 alteraProduto.setCategoriaProduto(categoria);
                 alteraProduto.setValidadeProduto(data);
                 alteraProduto.setVolumeProduto(volume);
+                alteraProduto.setQuantidadeProduto(quantidade);
                 alteraProduto.setObservacaoProduto(observacao);
 
                 boolean retorno = ProdutoDAO.alterar(alteraProduto);
@@ -624,6 +664,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                     cboCategoria.setSelectedIndex(0);
                     jdcValidade.setDate(null);
                     cboVolume.setSelectedIndex(0);
+                    txtQuantidade.setText("");
                     txtObservacoes.setText("");
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Falha na alteração do produto!");
@@ -712,6 +753,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                     String.valueOf(item.getCategoriaProduto()),
                     String.valueOf(formatador.format(item.getValidadeProduto())),
                     String.valueOf(item.getVolumeProduto()),
+                    String.valueOf(item.getQuantidadeProduto()),
                     String.valueOf(item.getObservacaoProduto())
                 });
             }
@@ -721,6 +763,18 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void txtObservacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtObservacoesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtObservacoesActionPerformed
+
+    private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantidadeActionPerformed
+
+    private void txtQuantidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtQuantidadeFocusGained
+        txtQuantidade.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtQuantidadeFocusGained
+
+    private void txtQuantidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtQuantidadeFocusLost
+        txtQuantidade.setBackground(Color.white);
+    }//GEN-LAST:event_txtQuantidadeFocusLost
     public void atualizarTabela() {
 
         ArrayList<Produto> lstRetorno = ProdutoDAO.listar();
@@ -741,6 +795,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 String.valueOf(item.getCategoriaProduto()),
                 String.valueOf(formatador.format(item.getValidadeProduto())),
                 String.valueOf(item.getVolumeProduto()),
+                String.valueOf(item.getQuantidadeProduto()),
                 String.valueOf(item.getObservacaoProduto())
             });
         }
@@ -808,6 +863,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblObservacoes;
     private javax.swing.JLabel lblPreco;
+    private javax.swing.JLabel lblQuantidade;
     private javax.swing.JLabel lblValidade;
     private javax.swing.JLabel lblVolume;
     private javax.swing.JLabel lblcategoria;
@@ -820,5 +876,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtObservacoes;
     private javax.swing.JTextField txtPreco;
+    private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }

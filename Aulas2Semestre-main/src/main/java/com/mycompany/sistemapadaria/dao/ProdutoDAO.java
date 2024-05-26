@@ -36,7 +36,7 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(url, usuario, senha);
 
             // 3) Preparar o comando SQL
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO produto (idProduto, nomeProduto, descricaoProduto, precoProduto, categoriaProduto, validadeProduto, volumeProduto, observacaoProduto) values (?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO produto (idProduto, nomeProduto, descricaoProduto, precoProduto, categoriaProduto, validadeProduto, volumeProduto, quantidadeProduto, observacaoProduto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             comandoSQL.setInt(1, obj.getIdProduto());
             comandoSQL.setString(2, obj.getNomeProduto());
             comandoSQL.setString(3, obj.getDescricaoProduto());
@@ -44,7 +44,8 @@ public class ProdutoDAO {
             comandoSQL.setString(5, obj.getCategoriaProduto());
             comandoSQL.setDate(6, new java.sql.Date(obj.getValidadeProduto().getTime()));
             comandoSQL.setString(7, obj.getVolumeProduto());
-            comandoSQL.setString(8, obj.getObservacaoProduto());
+            comandoSQL.setInt(8, obj.getQuantidadeProduto());
+            comandoSQL.setString(9, obj.getObservacaoProduto());
             // 4) Passar parâmetros para o comando SQL
             // 5) Executar o comando
             int linhasAfetadas = comandoSQL.executeUpdate();
@@ -73,15 +74,16 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(url, usuario, senha);
 
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE produto SET nomeProduto = ?, descricaoProduto = ?, precoProduto = ?, categoriaProduto = ?, validadeProduto = ?, volumeProduto = ?, observacaoProduto = ? WHERE idProduto = ?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE produto SET nomeProduto = ?, descricaoProduto = ?, precoProduto = ?, categoriaProduto = ?, validadeProduto = ?, volumeProduto = ?, quantidadeProduto = ?, observacaoProduto = ? WHERE idProduto = ?");
             comandoSQL.setString(1, obj.getNomeProduto());
             comandoSQL.setString(2, obj.getDescricaoProduto());
             comandoSQL.setFloat(3, obj.getPrecoProduto());
             comandoSQL.setString(4, obj.getCategoriaProduto());
             comandoSQL.setDate(5, new java.sql.Date(obj.getValidadeProduto().getTime()));
             comandoSQL.setString(6, obj.getVolumeProduto());
-            comandoSQL.setString(7, obj.getObservacaoProduto());
-            comandoSQL.setInt(8, obj.getIdProduto());
+            comandoSQL.setInt(7, obj.getQuantidadeProduto());
+            comandoSQL.setString(8, obj.getObservacaoProduto());
+            comandoSQL.setInt(9, obj.getIdProduto());
           
             int linhasAfetadas = comandoSQL.executeUpdate();
 
@@ -148,9 +150,10 @@ public class ProdutoDAO {
                 String categoria = rs.getString("categoriaProduto");
                 Date dataValidade = new java.util.Date(rs.getDate("validadeProduto").getTime());
                 String volume = rs.getString("volumeProduto");
+                int quantidade = rs.getInt("quantidadeProduto");
                 String observacoes = rs.getString("observacaoProduto");
 
-                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, observacoes);
+                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, quantidade, observacoes);
                 lstProduto.add(item);
             }
         } catch (ClassNotFoundException ex) {
@@ -184,9 +187,10 @@ public class ProdutoDAO {
                 String categoria = rs.getString("categoriaProduto");
                 Date dataValidade = new java.util.Date(rs.getDate("validadeProduto").getTime());
                 String volume = rs.getString("volumeProduto");
+                int quantidade = rs.getInt("quantidadeProduto");
                 String observacoes = rs.getString("observacaoProduto");
 
-                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, observacoes);
+                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, quantidade,observacoes);
                 lstProduto.add(item);
             }
         } catch (ClassNotFoundException ex) {
@@ -220,9 +224,10 @@ public class ProdutoDAO {
                 String categoria = rs.getString("categoriaProduto");
                 Date dataValidade = new java.util.Date(rs.getDate("validadeProduto").getTime());
                 String volume = rs.getString("volumeProduto");
+                int quantidade = rs.getInt("quantidadeProduto");
                 String observacoes = rs.getString("observacaoProduto");
 
-                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, observacoes);
+                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, quantidade, observacoes);
                 lstProduto.add(item);
             }
         } catch (ClassNotFoundException ex) {
