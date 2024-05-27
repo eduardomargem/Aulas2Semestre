@@ -2,9 +2,14 @@
 
 package com.mycompany.sistemapadaria.views;
 
+import com.mycompany.sistemapadaria.dao.ClienteDAO;
 import com.mycompany.sistemapadaria.models.Cliente;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,13 +18,20 @@ import javax.swing.table.DefaultTableModel;
  * @author daniel.passuncao
  */
 public class TelaCadastroCliente extends javax.swing.JFrame {
-
+    Cliente clienteAlterar = null;
+    
     /**
      * Creates new form TelaCadastroCliente
      */
     public TelaCadastroCliente() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    public TelaCadastroCliente(Cliente obj) {
+        initComponents();
+        
+        this.clienteAlterar = obj;
     }
 
     /**
@@ -69,7 +81,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         jProgressBar1 = new javax.swing.JProgressBar();
         jSeparator2 = new javax.swing.JSeparator();
-        txtNumero = new javax.swing.JFormattedTextField();
+        txtNumero = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
@@ -81,8 +93,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         txtNome1 = new javax.swing.JTextField();
         btnNome = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        txtCPF = new javax.swing.JTextField();
         btnCPF = new javax.swing.JButton();
+        formtxtCPF1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -127,13 +139,13 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        lblNome.setText("Nome:");
+        lblNome.setText("Nome: *");
 
-        lblCPF.setText("CPF:");
+        lblCPF.setText("CPF: *");
 
-        lblFone.setText("Fone:");
+        lblFone.setText("Fone: *");
 
-        lblEmail.setText("Email:");
+        lblEmail.setText("Email: *");
 
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -151,11 +163,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         cboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione ", "Masculino", "Feminino", "Outro" }));
 
-        lblSexo.setText("Sexo:");
+        lblSexo.setText("Sexo: *");
 
         cboEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Casado(a)", "Solteiro(a)", "Divorciado(a)" }));
 
-        lblEstadoCivil.setText("Estado Civil:");
+        lblEstadoCivil.setText("Estado Civil: *");
 
         txtEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -171,11 +183,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        lblEndereco.setText("Endereço:");
+        lblEndereco.setText("Endereço: *");
 
-        lblNumero.setText("Número:");
+        lblNumero.setText("Número: *");
 
-        lblBairro.setText("Bairro:");
+        lblBairro.setText("Bairro: *");
 
         txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -205,9 +217,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        lblCidade.setText("Cidade:");
+        lblCidade.setText("Cidade: *");
 
-        lblEstado.setText("Estado:");
+        lblEstado.setText("Estado: *");
 
         cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
         cboEstado.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -219,9 +231,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        lblCEP.setText("CEP:");
+        lblCEP.setText("CEP: *");
 
-        lblComplemento.setText("Complemento:");
+        lblComplemento.setText("Complemento: *");
 
         txtComplemento.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -285,7 +297,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        lblDataNascimento.setText("Data de Nascimento:");
+        lblDataNascimento.setText("Data de Nascimento: *");
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -301,11 +313,19 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        try {
-            txtNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("######")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txtNumero.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNumeroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNumeroFocusLost(evt);
+            }
+        });
+        txtNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -338,7 +358,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txtCidade, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtBairro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNumero, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(txtNumero, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,8 +381,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                                             .addComponent(formtxtFone, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblEmail)
+                                .addGap(2, 2, 2)
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(59, 59, 59)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -370,7 +390,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                                 .addComponent(lblDataNascimento)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 92, Short.MAX_VALUE))
+                                .addGap(0, 84, Short.MAX_VALUE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -468,7 +488,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "CPF", "Fone", "E-mail", "Sexo", "Estado Civil", "Endereço", "Número", "Bairro", "Cidade", "Complemento", "CEP", "Estado"
+                "ID", "Nome", "CPF", "Fone", "E-mail", "Sexo", "Estado Civil", "Data de Nacimento", "Endereço", "Número", "Bairro", "Cidade", "Complemento", "CEP", "Estado"
             }
         ));
         tblClientes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -505,7 +525,21 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nome:");
 
+        txtNome1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNome1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNome1FocusLost(evt);
+            }
+        });
+
         btnNome.setText("Pesquisar");
+        btnNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNomeActionPerformed(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("CPF:");
@@ -514,6 +548,20 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         btnCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCPFActionPerformed(evt);
+            }
+        });
+
+        try {
+            formtxtCPF1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        formtxtCPF1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formtxtCPF1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formtxtCPF1FocusLost(evt);
             }
         });
 
@@ -543,7 +591,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(formtxtCPF1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCPF)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -555,10 +603,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(btnNome)
-                    .addComponent(btnCPF))
+                    .addComponent(btnCPF)
+                    .addComponent(formtxtCPF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -616,39 +664,117 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-
-        //COLOCANCO ITENS NA TABELA
-        String nome = txtNome.getText();
-        String CPF = formtxtCPF.getText();
-        String fone = formtxtFone.getText();
-        String email = txtEmail.getText();
-        String sistemaSexo = "";
-        if (cboSexo.getSelectedIndex() > 0) {
-            sistemaSexo = cboSexo.getSelectedItem().toString();
-        }
-        String sistemaCivil = "";
-        if (cboEstadoCivil.getSelectedIndex() > 0) {
-            sistemaCivil = cboEstadoCivil.getSelectedItem().toString();
-        } 
-        String endereco = txtEndereco.getText();
-        String numero = txtNumero.getText();
-        String bairro = txtBairro.getText();
-        String cidade = txtCidade.getText();
-        String complemento = txtComplemento.getText();
-        String cep = formtxtCEP.getText();
-        String estado = cboEstado.getSelectedItem().toString();
-        
-        // 2) Crio o objeto da nota fiscal e passo os valores
-           //Cliente novoCliente = new Cliente(nome, CPF, fone, email, sistemaSexo, sistemaCivil, endereco, numero, bairro, cidade, complemento, cep, estado);
-           //Paramos aqui 13.05.24
-           
-        if (nome.strip().isEmpty() || CPF.strip().isEmpty() || fone.strip().isEmpty()
-                || email.strip().isEmpty() || endereco.strip().isEmpty() || numero.strip().isEmpty()
-                || bairro.strip().isEmpty() || cidade.strip().isEmpty() || complemento.strip().isEmpty()
-                || cep.strip().isEmpty() || sistemaSexo.isEmpty() || sistemaCivil.isEmpty()) {
+        if (txtNome.getText().isEmpty() || formtxtCPF.getText().isEmpty() || formtxtFone.getText().isEmpty()
+                || txtEmail.getText().isEmpty() || cboSexo.getSelectedItem() == null || cboEstadoCivil.getSelectedItem() == null
+                || jDateChooser1.getDate() == null || txtEndereco.getText().isEmpty() || txtNumero.getText().isEmpty()
+                || txtBairro.getText().isEmpty() || txtCidade.getText().isEmpty() || txtComplemento.getText().isEmpty() || formtxtCEP.getText().isEmpty() || cboEstado.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos obrigatórios!");
             return; // Se algum campo obrigatório estiver vazio, não prossiga
+        } else {
+            if (this.clienteAlterar == null) {
+                String nome = txtNome.getText();
+                String CPF = formtxtCPF.getText();
+                String fone = formtxtFone.getText();
+                String email = txtEmail.getText();
+                String sistemaSexo = "";
+                if (cboSexo.getSelectedIndex() > 0) {
+                    sistemaSexo = cboSexo.getSelectedItem().toString();
+                }
+                String sistemaCivil = "";
+                if (cboEstadoCivil.getSelectedIndex() > 0) {
+                    sistemaCivil = cboEstadoCivil.getSelectedItem().toString();
+                } 
+                Date nascimento = jDateChooser1.getDate();
+                String endereco = txtEndereco.getText();
+                String numero = txtNumero.getText();
+                String bairro = txtBairro.getText();
+                String cidade = txtCidade.getText();
+                String complemento = txtComplemento.getText();
+                String cep = formtxtCEP.getText();
+                String estado = cboEstado.getSelectedItem().toString();
+                
+                Cliente novoCliente = new Cliente(nome, CPF, fone, email, sistemaSexo, sistemaCivil, nascimento, endereco, numero, bairro, cidade, complemento, cep, estado);
+                boolean retorno = ClienteDAO.cadastrar(novoCliente);
+                if (retorno) {
+                    JOptionPane.showMessageDialog(rootPane, "Cliente cadastrado com sucesso!");
+                    txtNome.setText("");
+                    formtxtCPF.setText("");
+                    formtxtFone.setText("");
+                    txtEmail.setText("");
+                    cboSexo.setSelectedIndex(0);
+                    cboEstadoCivil.setSelectedIndex(0);
+                    jDateChooser1.setDate(null);
+                    txtEndereco.setText("");
+                    txtNumero.setText("");
+                    txtBairro.setText("");
+                    txtCidade.setText("");
+                    txtComplemento.setText("");
+                    formtxtCEP.setText("");
+                    cboEstado.setSelectedIndex(0);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar cliente!");
+                }
+            } else {
+                String nome = txtNome.getText();
+                String CPF = formtxtCPF.getText();
+                String fone = formtxtFone.getText();
+                String email = txtEmail.getText();
+                String sistemaSexo = "";
+                if (cboSexo.getSelectedIndex() > 0) {
+                    sistemaSexo = cboSexo.getSelectedItem().toString();
+                }
+                String sistemaCivil = "";
+                if (cboEstadoCivil.getSelectedIndex() > 0) {
+                    sistemaCivil = cboEstadoCivil.getSelectedItem().toString();
+                } 
+                Date nascimento = jDateChooser1.getDate();
+                String endereco = txtEndereco.getText();
+                String numero = txtNumero.getText();
+                String bairro = txtBairro.getText();
+                String cidade = txtCidade.getText();
+                String complemento = txtComplemento.getText();
+                String cep = formtxtCEP.getText();
+                String estado = cboEstado.getSelectedItem().toString();
+                
+                clienteAlterar.setNome(nome);
+                clienteAlterar.setCpf(CPF);
+                clienteAlterar.setTelefone(fone);
+                clienteAlterar.setEmail(email);
+                clienteAlterar.setSexo(cep);
+                clienteAlterar.setCivil(email);
+                clienteAlterar.setNascimento(nascimento);
+                clienteAlterar.setEndereco(endereco);
+                clienteAlterar.setNumeroCasa(numero);
+                clienteAlterar.setBairro(bairro);
+                clienteAlterar.setCidade(cidade);
+                clienteAlterar.setComplemento(complemento);
+                clienteAlterar.setCep(cep);
+                clienteAlterar.setEstado(estado);
+                
+                boolean retorno = ClienteDAO.alterar(clienteAlterar);
+                
+                if (retorno) {
+                    JOptionPane.showMessageDialog(rootPane, "Cliente alterado com sucesso!");
+                    txtNome.setText("");
+                    formtxtCPF.setText("");
+                    formtxtFone.setText("");
+                    txtEmail.setText("");
+                    cboSexo.setSelectedIndex(0);
+                    cboEstadoCivil.setSelectedIndex(0);
+                    jDateChooser1.setDate(null);
+                    txtEndereco.setText("");
+                    txtNumero.setText("");
+                    txtBairro.setText("");
+                    txtCidade.setText("");
+                    txtComplemento.setText("");
+                    formtxtCEP.setText("");
+                    cboEstado.setSelectedIndex(0);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Falha na alteração do cliente!");
+                }
+            }
         }
+        
        // DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
         //modelo.addRow(new String[]{nome, CPF, fone, email, sistemaSexo, sistemaCivil, endereco, numero, bairro, cidade, complemento, cep, estado});
 
@@ -713,7 +839,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void formtxtCPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCPFFocusGained
-        formtxtCPF.setBackground(Color.lightGray);
+        formtxtCPF.setBackground(Color.yellow);
     }//GEN-LAST:event_formtxtCPFFocusGained
 
     private void formtxtCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCPFFocusLost
@@ -721,7 +847,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formtxtCPFFocusLost
 
     private void formtxtFoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtFoneFocusGained
-        formtxtFone.setBackground(Color.lightGray);
+        formtxtFone.setBackground(Color.yellow);
     }//GEN-LAST:event_formtxtFoneFocusGained
 
     private void formtxtFoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtFoneFocusLost
@@ -729,7 +855,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formtxtFoneFocusLost
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
-        txtEmail.setBackground(Color.lightGray);
+        txtEmail.setBackground(Color.yellow);
     }//GEN-LAST:event_txtEmailFocusGained
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
@@ -737,7 +863,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailFocusLost
 
     private void txtEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoFocusGained
-        txtEndereco.setBackground(Color.lightGray);
+        txtEndereco.setBackground(Color.yellow);
     }//GEN-LAST:event_txtEnderecoFocusGained
 
     private void txtEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoFocusLost
@@ -745,7 +871,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEnderecoFocusLost
 
     private void txtBairroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusGained
-        txtBairro.setBackground(Color.lightGray);
+        txtBairro.setBackground(Color.yellow);
     }//GEN-LAST:event_txtBairroFocusGained
 
     private void txtBairroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusLost
@@ -753,7 +879,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBairroFocusLost
 
     private void txtCidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusGained
-        txtCidade.setBackground(Color.lightGray);
+        txtCidade.setBackground(Color.yellow);
     }//GEN-LAST:event_txtCidadeFocusGained
 
     private void txtCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusLost
@@ -761,7 +887,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCidadeFocusLost
 
     private void txtComplementoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtComplementoFocusGained
-        txtComplemento.setBackground(Color.lightGray);
+        txtComplemento.setBackground(Color.yellow);
     }//GEN-LAST:event_txtComplementoFocusGained
 
     private void txtComplementoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtComplementoFocusLost
@@ -769,7 +895,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtComplementoFocusLost
 
     private void formtxtCEPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCEPFocusGained
-        formtxtCEP.setBackground(Color.lightGray);
+        formtxtCEP.setBackground(Color.yellow);
     }//GEN-LAST:event_formtxtCEPFocusGained
 
     private void formtxtCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCEPFocusLost
@@ -793,30 +919,140 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formtxtCPFKeyTyped
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        // TODO add your handling code here:
+        ArrayList<Cliente> lstRetorno = ClienteDAO.listar();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+
+        modelo.setRowCount(0);
+        
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+
+        for (Cliente item : lstRetorno) {
+
+            modelo.addRow(new String[]{
+                String.valueOf(item.getIdCliente()),
+                String.valueOf(item.getNome()),
+                String.valueOf(item.getCpf()),
+                String.valueOf(item.getTelefone()),
+                String.valueOf(item.getEmail()),
+                String.valueOf(item.getSexo()),
+                String.valueOf(item.getCivil()),
+                String.valueOf(formatador.format(item.getNascimento())),
+                String.valueOf(item.getEndereco()),
+                String.valueOf(item.getNumeroCasa()),
+                String.valueOf(item.getBairro()),
+                String.valueOf(item.getCidade()),
+                String.valueOf(item.getComplemento()),
+                String.valueOf(item.getCep()),
+                String.valueOf(item.getEstado())
+            });
+        }
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel modeloCliente = (DefaultTableModel) tblClientes.getModel();
+        int linhaSelecionada = tblClientes.getSelectedRow();
+        if (linhaSelecionada >= 0) {
+
+            int id = Integer.parseInt(modeloCliente.getValueAt(linhaSelecionada, 0).toString());
+            String nomeCliente = modeloCliente.getValueAt(linhaSelecionada, 1).toString();
+            String cpf = modeloCliente.getValueAt(linhaSelecionada, 2).toString();
+            String fone = modeloCliente.getValueAt(linhaSelecionada, 3).toString();
+            String email = modeloCliente.getValueAt(linhaSelecionada, 4).toString();
+            String sexo = modeloCliente.getValueAt(linhaSelecionada, 5).toString();
+            String estadoCivil = modeloCliente.getValueAt(linhaSelecionada, 6).toString();
+            Date nascimento = null;
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                nascimento = sdf.parse(modeloCliente.getValueAt(linhaSelecionada, 7).toString());
+            } catch (ParseException ex) {
+                ex.printStackTrace(); // Trate a exceção adequadamente
+            }
+            String endereco = modeloCliente.getValueAt(linhaSelecionada, 8).toString();
+            String numero = modeloCliente.getValueAt(linhaSelecionada, 9).toString();
+            String bairro = modeloCliente.getValueAt(linhaSelecionada, 10).toString();
+            String cidade = modeloCliente.getValueAt(linhaSelecionada, 11).toString();
+            String complemento = modeloCliente.getValueAt(linhaSelecionada, 12).toString();
+            String cep = modeloCliente.getValueAt(linhaSelecionada, 13).toString();
+            String estado = modeloCliente.getValueAt(linhaSelecionada, 14).toString();
+            
+            clienteAlterar = new Cliente(id, nomeCliente, cpf, fone, email, sexo, estadoCivil, nascimento, endereco, numero, bairro, cidade, complemento, cep, estado);
+            
+            jTabbedPane1.setSelectedIndex(0);
+            txtNome.setText(clienteAlterar.getNome());
+            formtxtCPF.setText(clienteAlterar.getCpf());
+            formtxtFone.setText(clienteAlterar.getTelefone());
+            txtEmail.setText(clienteAlterar.getEmail());
+            cboSexo.setSelectedItem(clienteAlterar.getSexo());
+            cboEstadoCivil.setSelectedItem(clienteAlterar.getCivil());
+            jDateChooser1.setDate(clienteAlterar.getNascimento());
+            txtEndereco.setText(clienteAlterar.getEndereco());
+            txtNumero.setText(clienteAlterar.getNumeroCasa());
+            txtBairro.setText(clienteAlterar.getBairro());
+            txtCidade.setText(clienteAlterar.getCidade());
+            txtComplemento.setText(clienteAlterar.getComplemento());
+            formtxtCEP.setText(clienteAlterar.getCep());
+            cboEstado.setSelectedItem(clienteAlterar.getNome());
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-       // int linha = tblProduto.getSelectedRow();
-
-        //if (linha == -1) {
-        //    JOptionPane.showMessageDialog(rootPane, "Por favor, Selecione a linha!");
-        //} else {
-        //    DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
-        //    modelo.removeRow(linha);
-        //}
+       int linhaSelecionada = tblClientes.getSelectedRow();
+        if (linhaSelecionada >= 0) {
+            DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+            int idExcluir = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
+            boolean retorno = ClienteDAO.excluir(idExcluir);
+            if (retorno) {
+                JOptionPane.showMessageDialog(rootPane, "Exclusão feita com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Erro na exclusão de cliente!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma linha antes de prosseguir com a exclusão.");
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCPFActionPerformed
-        // TODO add your handling code here:
+        if (formtxtCPF1.getText().strip().equals("")) {
+            atualizarTabela();
+        } else {
+            String cpf = formtxtCPF1.getText();
+
+            ArrayList<Cliente> lstRetorno = ClienteDAO.buscarCPF(cpf);
+
+            DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+
+            modelo.setRowCount(0);
+
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+
+            for (Cliente item : lstRetorno) {
+
+                modelo.addRow(new String[]{
+                    String.valueOf(item.getIdCliente()),
+                    String.valueOf(item.getNome()),
+                    String.valueOf(item.getCpf()),
+                    String.valueOf(item.getTelefone()),
+                    String.valueOf(item.getEmail()),
+                    String.valueOf(item.getSexo()),
+                    String.valueOf(item.getCivil()),
+                    String.valueOf(formatador.format(item.getNascimento())),
+                    String.valueOf(item.getEndereco()),
+                    String.valueOf(item.getNumeroCasa()),
+                    String.valueOf(item.getBairro()),
+                    String.valueOf(item.getCidade()),
+                    String.valueOf(item.getComplemento()),
+                    String.valueOf(item.getCep()),
+                    String.valueOf(item.getEstado())
+                });
+            }
+        }
     }//GEN-LAST:event_btnCPFActionPerformed
 
     private void txtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyReleased
@@ -832,9 +1068,105 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeFocusLost
 
     private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
-        txtNome.setBackground(Color.lightGray);
+        txtNome.setBackground(Color.yellow);
     }//GEN-LAST:event_txtNomeFocusGained
 
+    private void btnNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNomeActionPerformed
+        if (txtNome1.getText().strip().equals("")) {
+            atualizarTabela();
+        } else {
+            String nomeCliente = txtNome1.getText();
+
+            ArrayList<Cliente> lstRetorno = ClienteDAO.buscarNome(nomeCliente);
+
+            DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+
+            modelo.setRowCount(0);
+
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+
+            for (Cliente item : lstRetorno) {
+
+                modelo.addRow(new String[]{
+                    String.valueOf(item.getIdCliente()),
+                    String.valueOf(item.getNome()),
+                    String.valueOf(item.getCpf()),
+                    String.valueOf(item.getTelefone()),
+                    String.valueOf(item.getEmail()),
+                    String.valueOf(item.getSexo()),
+                    String.valueOf(item.getCivil()),
+                    String.valueOf(formatador.format(item.getNascimento())),
+                    String.valueOf(item.getEndereco()),
+                    String.valueOf(item.getNumeroCasa()),
+                    String.valueOf(item.getBairro()),
+                    String.valueOf(item.getCidade()),
+                    String.valueOf(item.getComplemento()),
+                    String.valueOf(item.getCep()),
+                    String.valueOf(item.getEstado())
+                });
+            }
+        }
+    }//GEN-LAST:event_btnNomeActionPerformed
+
+    private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroActionPerformed
+
+    private void txtNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusGained
+        txtNumero.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtNumeroFocusGained
+
+    private void txtNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusLost
+        txtNumero.setBackground(Color.white);
+    }//GEN-LAST:event_txtNumeroFocusLost
+
+    private void txtNome1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNome1FocusGained
+        txtNome1.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtNome1FocusGained
+
+    private void txtNome1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNome1FocusLost
+        txtNome1.setBackground(Color.white);
+    }//GEN-LAST:event_txtNome1FocusLost
+
+    private void formtxtCPF1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCPF1FocusGained
+        formtxtCPF1.setBackground(Color.yellow);
+    }//GEN-LAST:event_formtxtCPF1FocusGained
+
+    private void formtxtCPF1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formtxtCPF1FocusLost
+        formtxtCPF1.setBackground(Color.yellow);
+    }//GEN-LAST:event_formtxtCPF1FocusLost
+
+    public void atualizarTabela() {
+
+        ArrayList<Cliente> lstRetorno = ClienteDAO.listar();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+
+        modelo.setRowCount(0);
+
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+
+        for (Cliente item : lstRetorno) {
+
+            modelo.addRow(new String[]{
+                String.valueOf(item.getIdCliente()),
+                    String.valueOf(item.getNome()),
+                    String.valueOf(item.getCpf()),
+                    String.valueOf(item.getTelefone()),
+                    String.valueOf(item.getEmail()),
+                    String.valueOf(item.getSexo()),
+                    String.valueOf(item.getCivil()),
+                    String.valueOf(formatador.format(item.getNascimento())),
+                    String.valueOf(item.getEndereco()),
+                    String.valueOf(item.getNumeroCasa()),
+                    String.valueOf(item.getBairro()),
+                    String.valueOf(item.getCidade()),
+                    String.valueOf(item.getComplemento()),
+                    String.valueOf(item.getCep()),
+                    String.valueOf(item.getEstado())
+            });
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -885,6 +1217,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboSexo;
     private javax.swing.JFormattedTextField formtxtCEP;
     private javax.swing.JFormattedTextField formtxtCPF;
+    private javax.swing.JFormattedTextField formtxtCPF1;
     private javax.swing.JFormattedTextField formtxtFone;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
@@ -916,13 +1249,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblSexo;
     private javax.swing.JTable tblClientes;
     private javax.swing.JTextField txtBairro;
-    private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNome1;
-    private javax.swing.JFormattedTextField txtNumero;
+    private javax.swing.JTextField txtNumero;
     // End of variables declaration//GEN-END:variables
 }

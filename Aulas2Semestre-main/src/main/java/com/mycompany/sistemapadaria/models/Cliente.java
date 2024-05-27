@@ -13,14 +13,14 @@ public class Cliente {
     private String civil;
     private Date nascimento;
     private String endereco;
-    private int numeroCasa;
+    private String numeroCasa;
     private String bairro;
     private String cidade;
     private String complemento;
     private String cep;
     private String estado;
 
-    public Cliente(String nome, String cpf, String telefone, String email, String sexo, String civil, Date nascimento, String endereco, int numeroCasa, String bairro, String cidade, String complemento, String cep, String estado) {
+    public Cliente(String nome, String cpf, String telefone, String email, String sexo, String civil, Date nascimento, String endereco, String numeroCasa, String bairro, String cidade, String complemento, String cep, String estado) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -37,7 +37,7 @@ public class Cliente {
         this.estado = estado;
     }
     
-    public Cliente(int idCliente, String nome, String cpf, String telefone, String email, String sexo, String civil, Date nascimento, String endereco, int numeroCasa, String bairro, String cidade, String complemento, String cep, String estado) {
+    public Cliente(int idCliente, String nome, String cpf, String telefone, String email, String sexo, String civil, Date nascimento, String endereco, String numeroCasa, String bairro, String cidade, String complemento, String cep, String estado) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
@@ -127,11 +127,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public int getNumeroCasa() {
+    public String getNumeroCasa() {
         return numeroCasa;
     }
 
-    public void setNumeroCasa(int numeroCasa) {
+    public void setNumeroCasa(String numeroCasa) {
         this.numeroCasa = numeroCasa;
     }
 

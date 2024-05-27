@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.sistemapadaria.dao;
 
 import com.mycompany.sistemapadaria.models.Produto;
@@ -29,7 +25,7 @@ public class ProdutoDAO {
 
     public static String url = "jdbc:mysql://localhost:3306/sistemapadaria";
     public static String usuario = "root";
-    public static String senha = "admin";
+    public static String senha = "";
     /**
      * Abre a conexão com o banco de dados e cadastra um produto.
      * 
@@ -47,17 +43,16 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(url, usuario, senha);
 
             // 3) Preparar o comando SQL
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO produto (idProduto, nomeProduto, descricaoProduto, precoProduto, categoriaProduto, validadeProduto, volumeProduto, quantidadeProduto, observacaoProduto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO produtos (nomeProduto, descricaoProduto, precoProduto, categoriaProduto, validadeProduto, volumeProduto, quantidadeProduto, observacaoProduto) values (?, ?, ?, ?, ?, ?, ?, ?)");
             // 4) Passar parâmetros para o comando SQL
-            comandoSQL.setInt(1, obj.getIdProduto());
-            comandoSQL.setString(2, obj.getNomeProduto());
-            comandoSQL.setString(3, obj.getDescricaoProduto());
-            comandoSQL.setFloat(4, obj.getPrecoProduto());
-            comandoSQL.setString(5, obj.getCategoriaProduto());
-            comandoSQL.setDate(6, new java.sql.Date(obj.getValidadeProduto().getTime()));
-            comandoSQL.setString(7, obj.getVolumeProduto());
-            comandoSQL.setInt(8, obj.getQuantidadeProduto());
-            comandoSQL.setString(9, obj.getObservacaoProduto());
+            comandoSQL.setString(1, obj.getNomeProduto());
+            comandoSQL.setString(2, obj.getDescricaoProduto());
+            comandoSQL.setDouble(3, obj.getPrecoProduto());
+            comandoSQL.setString(4, obj.getCategoriaProduto());
+            comandoSQL.setDate(5, new java.sql.Date(obj.getValidadeProduto().getTime()));
+            comandoSQL.setString(6, obj.getVolumeProduto());
+            comandoSQL.setInt(7, obj.getQuantidadeProduto());
+            comandoSQL.setString(8, obj.getObservacaoProduto());
             // 5) Executar o comando
             int linhasAfetadas = comandoSQL.executeUpdate();
 
@@ -90,10 +85,10 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(url, usuario, senha);
 
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE produto SET nomeProduto = ?, descricaoProduto = ?, precoProduto = ?, categoriaProduto = ?, validadeProduto = ?, volumeProduto = ?, quantidadeProduto = ?, observacaoProduto = ? WHERE idProduto = ?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("UPDATE produtos SET nomeProduto = ?, descricaoProduto = ?, precoProduto = ?, categoriaProduto = ?, validadeProduto = ?, volumeProduto = ?, quantidadeProduto = ?, observacaoProduto = ? WHERE idProduto = ?");
             comandoSQL.setString(1, obj.getNomeProduto());
             comandoSQL.setString(2, obj.getDescricaoProduto());
-            comandoSQL.setFloat(3, obj.getPrecoProduto());
+            comandoSQL.setDouble(3, obj.getPrecoProduto());
             comandoSQL.setString(4, obj.getCategoriaProduto());
             comandoSQL.setDate(5, new java.sql.Date(obj.getValidadeProduto().getTime()));
             comandoSQL.setString(6, obj.getVolumeProduto());
@@ -131,7 +126,7 @@ public class ProdutoDAO {
             
             conexao = DriverManager.getConnection(url, usuario, senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("DELETE FROM produto WHERE idProduto = ?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("DELETE FROM produtos WHERE idProduto = ?");
             comandoSQL.setInt(1, idExcluir);
             
             int linhasAfetadas = comandoSQL.executeUpdate();
@@ -163,7 +158,7 @@ public class ProdutoDAO {
             
             conexao = DriverManager.getConnection(url, usuario, senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produto");
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produtos");
             
             rs = comandoSQL.executeQuery();
             
@@ -171,14 +166,14 @@ public class ProdutoDAO {
                 int id = rs.getInt("idProduto");
                 String nome = rs.getString("nomeProduto");
                 String descricao = rs.getString("descricaoProduto");
-                float preco = rs.getFloat("precoProduto");
+                double preco = rs.getDouble("precoProduto");
                 String categoria = rs.getString("categoriaProduto");
                 Date dataValidade = new java.util.Date(rs.getDate("validadeProduto").getTime());
                 String volume = rs.getString("volumeProduto");
                 int quantidade = rs.getInt("quantidadeProduto");
-                String observacoes = rs.getString("observacaoProduto");
+                String observacao = rs.getString("observacaoProduto");
 
-                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, quantidade, observacoes);
+                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, quantidade, observacao);
                 lstProduto.add(item);
             }
         } catch (ClassNotFoundException ex) {
@@ -204,7 +199,7 @@ public class ProdutoDAO {
            
             conexao = DriverManager.getConnection(url, usuario, senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE categoriaProduto = ?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produtos WHERE categoriaProduto = ?");
             
             comandoSQL.setString(1, categoriaProduto);
             rs = comandoSQL.executeQuery();
@@ -213,14 +208,14 @@ public class ProdutoDAO {
                 int id = rs.getInt("idProduto");
                 String nome = rs.getString("nomeProduto");
                 String descricao = rs.getString("descricaoProduto");
-                float preco = rs.getFloat("precoProduto");
+                double preco = rs.getDouble("precoProduto");
                 String categoria = rs.getString("categoriaProduto");
                 Date dataValidade = new java.util.Date(rs.getDate("validadeProduto").getTime());
                 String volume = rs.getString("volumeProduto");
                 int quantidade = rs.getInt("quantidadeProduto");
-                String observacoes = rs.getString("observacaoProduto");
+                String observacao = rs.getString("observacaoProduto");
 
-                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, quantidade,observacoes);
+                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, quantidade,observacao);
                 lstProduto.add(item);
             }
         } catch (ClassNotFoundException ex) {
@@ -246,7 +241,7 @@ public class ProdutoDAO {
             
             conexao = DriverManager.getConnection(url, usuario, senha);
             
-            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE validadeProduto = ?");
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM produtos WHERE validadeProduto = ?");
             
             comandoSQL.setDate(1,new java.sql.Date( validadeProduto.getTime()));
             rs = comandoSQL.executeQuery();
@@ -260,9 +255,9 @@ public class ProdutoDAO {
                 Date dataValidade = new java.util.Date(rs.getDate("validadeProduto").getTime());
                 String volume = rs.getString("volumeProduto");
                 int quantidade = rs.getInt("quantidadeProduto");
-                String observacoes = rs.getString("observacaoProduto");
+                String observacao = rs.getString("observacaoProduto");
 
-                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, quantidade, observacoes);
+                Produto item = new Produto(id, nome, descricao, preco, categoria, dataValidade, volume, quantidade, observacao);
                 lstProduto.add(item);
             }
         } catch (ClassNotFoundException ex) {

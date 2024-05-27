@@ -122,7 +122,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="lblObservacoes" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtObservacoes" min="-2" pref="549" max="-2" attributes="0"/>
@@ -323,7 +323,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblObservacoes">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Observa&#xe7;&#xf5;es:"/>
+                    <Property name="text" type="java.lang.String" value="Observa&#xe7;&#xf5;es: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDataNascimento">
@@ -332,6 +332,10 @@
                   </Properties>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="jdcValidade">
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jdcValidadeFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jdcValidadeFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCadastrar">
                   <Properties>
@@ -563,6 +567,8 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCategoria">
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCategoriaFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCategoriaFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCategoriaActionPerformed"/>
                   </Events>
                 </Component>
@@ -591,6 +597,10 @@
                   </Events>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="jdcValidadeConsulta">
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jdcValidadeConsultaFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jdcValidadeConsultaFocusLost"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

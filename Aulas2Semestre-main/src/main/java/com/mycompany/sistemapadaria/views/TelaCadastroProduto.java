@@ -178,9 +178,18 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
-        lblObservacoes.setText("Observações:");
+        lblObservacoes.setText("Observações: *");
 
         lblDataNascimento.setText("Data de Validade *");
+
+        jdcValidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jdcValidadeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jdcValidadeFocusLost(evt);
+            }
+        });
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +228,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         pnlCadastroProdutoLayout.setHorizontalGroup(
             pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadastroProdutoLayout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblObservacoes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,6 +374,14 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         lblcategoria.setBackground(new java.awt.Color(0, 0, 0));
         lblcategoria.setText("Categoria:");
 
+        txtCategoria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCategoriaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCategoriaFocusLost(evt);
+            }
+        });
         txtCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCategoriaActionPerformed(evt);
@@ -385,6 +402,15 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         btnValidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValidadeActionPerformed(evt);
+            }
+        });
+
+        jdcValidadeConsulta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jdcValidadeConsultaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jdcValidadeConsultaFocusLost(evt);
             }
         });
 
@@ -519,7 +545,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             int id = Integer.parseInt(modeloProduto.getValueAt(linhaSelecionada, 0).toString());
             String nomeProduto = modeloProduto.getValueAt(linhaSelecionada, 1).toString();
             String descricaoProduto = modeloProduto.getValueAt(linhaSelecionada, 2).toString();
-            float precoProduto = Float.parseFloat(modeloProduto.getValueAt(linhaSelecionada, 3).toString());
+            double precoProduto = Double.parseDouble(modeloProduto.getValueAt(linhaSelecionada, 3).toString());
             String categoriaProduto = modeloProduto.getValueAt(linhaSelecionada, 4).toString();
             Date dataValidade = null;
             try {
@@ -613,7 +639,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             if (this.alteraProduto == null) {
                 String nomeProduto = txtNome.getText();
                 String descricaoProduto = txtDescricao.getText();
-                float precoProduto = Float.parseFloat(txtPreco.getText());
+                double precoProduto = Double.parseDouble(txtPreco.getText());
                 String categoriaProduto = cboCategoria.getSelectedItem().toString();
                 Date dataValidade = jdcValidade.getDate();
                 String volumeProduto = cboVolume.getSelectedItem().toString();
@@ -638,7 +664,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             } else {
                 String nome = txtNome.getText();
                 String descricao = txtDescricao.getText();
-                float preco = Float.parseFloat(txtPreco.getText());
+                double preco = Double.parseDouble(txtPreco.getText());
                 String categoria = cboCategoria.getSelectedItem().toString();
                 Date data = jdcValidade.getDate();
                 String volume = cboVolume.getSelectedItem().toString();
@@ -775,6 +801,30 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void txtQuantidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtQuantidadeFocusLost
         txtQuantidade.setBackground(Color.white);
     }//GEN-LAST:event_txtQuantidadeFocusLost
+
+    private void jdcValidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jdcValidadeFocusGained
+        jdcValidade.setBackground(Color.yellow);
+    }//GEN-LAST:event_jdcValidadeFocusGained
+
+    private void jdcValidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jdcValidadeFocusLost
+        jdcValidade.setBackground(Color.white);
+    }//GEN-LAST:event_jdcValidadeFocusLost
+
+    private void txtCategoriaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCategoriaFocusGained
+        txtCategoria.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtCategoriaFocusGained
+
+    private void txtCategoriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCategoriaFocusLost
+        txtCategoria.setBackground(Color.white);
+    }//GEN-LAST:event_txtCategoriaFocusLost
+
+    private void jdcValidadeConsultaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jdcValidadeConsultaFocusGained
+        jdcValidade.setBackground(Color.yellow);
+    }//GEN-LAST:event_jdcValidadeConsultaFocusGained
+
+    private void jdcValidadeConsultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jdcValidadeConsultaFocusLost
+        jdcValidade.setBackground(Color.white);
+    }//GEN-LAST:event_jdcValidadeConsultaFocusLost
     public void atualizarTabela() {
 
         ArrayList<Produto> lstRetorno = ProdutoDAO.listar();

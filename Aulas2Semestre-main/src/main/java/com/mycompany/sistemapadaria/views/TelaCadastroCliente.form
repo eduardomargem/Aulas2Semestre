@@ -154,7 +154,7 @@
                                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                       <Component id="txtCidade" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="txtBairro" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                                                      <Component id="txtNumero" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txtNumero" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -170,7 +170,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="lblFone" max="32767" attributes="0"/>
                                               <Component id="lblCPF" max="32767" attributes="0"/>
@@ -188,9 +188,9 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblEmail" min="-2" pref="36" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                           <Component id="txtEmail" min="-2" pref="202" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -200,7 +200,7 @@
                                           <Component id="lblDataNascimento" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jDateChooser1" min="-2" pref="129" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="92" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="84" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
@@ -332,22 +332,22 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblNome">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nome:"/>
+                    <Property name="text" type="java.lang.String" value="Nome: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCPF">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="CPF:"/>
+                    <Property name="text" type="java.lang.String" value="CPF: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblFone">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Fone:"/>
+                    <Property name="text" type="java.lang.String" value="Fone: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblEmail">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Email:"/>
+                    <Property name="text" type="java.lang.String" value="Email: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtEmail">
@@ -374,7 +374,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblSexo">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Sexo:"/>
+                    <Property name="text" type="java.lang.String" value="Sexo: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboEstadoCivil">
@@ -394,7 +394,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblEstadoCivil">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Estado Civil:"/>
+                    <Property name="text" type="java.lang.String" value="Estado Civil: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -408,17 +408,17 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblEndereco">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
+                    <Property name="text" type="java.lang.String" value="Endere&#xe7;o: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblNumero">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="N&#xfa;mero:"/>
+                    <Property name="text" type="java.lang.String" value="N&#xfa;mero: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblBairro">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Bairro:"/>
+                    <Property name="text" type="java.lang.String" value="Bairro: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtBairro">
@@ -437,12 +437,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCidade">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cidade:"/>
+                    <Property name="text" type="java.lang.String" value="Cidade: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblEstado">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Estado:"/>
+                    <Property name="text" type="java.lang.String" value="Estado: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboEstado">
@@ -490,12 +490,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblCEP">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="CEP:"/>
+                    <Property name="text" type="java.lang.String" value="CEP: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblComplemento">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Complemento:"/>
+                    <Property name="text" type="java.lang.String" value="Complemento: *"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtComplemento">
@@ -542,7 +542,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDataNascimento">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Data de Nascimento:"/>
+                    <Property name="text" type="java.lang.String" value="Data de Nascimento: *"/>
                   </Properties>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
@@ -567,12 +567,12 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator2">
                 </Component>
-                <Component class="javax.swing.JFormattedTextField" name="txtNumero">
-                  <Properties>
-                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                      <Format format="######" subtype="-1" type="5"/>
-                    </Property>
-                  </Properties>
+                <Component class="javax.swing.JTextField" name="txtNumero">
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNumeroFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNumeroFocusLost"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumeroActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -617,7 +617,7 @@
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtCPF" min="-2" pref="194" max="-2" attributes="0"/>
+                                  <Component id="formtxtCPF1" min="-2" pref="194" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnCPF" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -633,10 +633,10 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNome1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtCPF" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnNome" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="formtxtCPF1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane1" pref="342" max="32767" attributes="0"/>
@@ -668,13 +668,15 @@
                     <Component class="javax.swing.JTable" name="tblClientes">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="13" rowCount="0">
+                          <Table columnCount="15" rowCount="0">
+                            <Column editable="true" title="ID" type="java.lang.Object"/>
                             <Column editable="true" title="Nome" type="java.lang.Object"/>
                             <Column editable="true" title="CPF" type="java.lang.Object"/>
                             <Column editable="true" title="Fone" type="java.lang.Object"/>
                             <Column editable="true" title="E-mail" type="java.lang.Object"/>
                             <Column editable="true" title="Sexo" type="java.lang.Object"/>
                             <Column editable="true" title="Estado Civil" type="java.lang.Object"/>
+                            <Column editable="true" title="Data de Nacimento" type="java.lang.Object"/>
                             <Column editable="true" title="Endere&#xe7;o" type="java.lang.Object"/>
                             <Column editable="true" title="N&#xfa;mero" type="java.lang.Object"/>
                             <Column editable="true" title="Bairro" type="java.lang.Object"/>
@@ -730,11 +732,18 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtNome1">
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNome1FocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNome1FocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnNome">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Pesquisar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNomeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
@@ -744,14 +753,23 @@
                     <Property name="text" type="java.lang.String" value="CPF:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtCPF">
-                </Component>
                 <Component class="javax.swing.JButton" name="btnCPF">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Pesquisar"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCPFActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JFormattedTextField" name="formtxtCPF1">
+                  <Properties>
+                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                      <Format format="###.###.###-##" subtype="-1" type="5"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="formtxtCPF1FocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="formtxtCPF1FocusLost"/>
                   </Events>
                 </Component>
               </SubComponents>

@@ -7,14 +7,14 @@ public class Produto {
     private int idProduto;
     private String nomeProduto;
     private String descricaoProduto;
-    private float precoProduto;
+    private double precoProduto;
     private String categoriaProduto;
     private Date validadeProduto;
     private String volumeProduto;
     private int quantidadeProduto;
     private String observacaoProduto;
 
-    public Produto(int idProduto, String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, String volumeProduto, int quantidadeProduto,String observacaoProduto) {
+    public Produto(int idProduto, String nomeProduto, String descricaoProduto, double precoProduto, String categoriaProduto, String volumeProduto, int quantidadeProduto,String observacaoProduto) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
@@ -25,7 +25,7 @@ public class Produto {
         this.observacaoProduto = observacaoProduto;
     }
 
-    public Produto(String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, int quantidadeProduto,String observacaoProduto) {
+    public Produto(String nomeProduto, String descricaoProduto, double precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, int quantidadeProduto,String observacaoProduto) {
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
         this.precoProduto = precoProduto;
@@ -36,7 +36,7 @@ public class Produto {
         this.observacaoProduto = observacaoProduto;
     }
 
-    public Produto(int idProduto, String nomeProduto, String descricaoProduto, float precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, int quantidadeProduto, String observacaoProduto) {
+    public Produto(int idProduto, String nomeProduto, String descricaoProduto, double precoProduto, String categoriaProduto, Date validadeProduto, String volumeProduto, int quantidadeProduto, String observacaoProduto) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
@@ -80,11 +80,11 @@ public class Produto {
         this.descricaoProduto = descricaoProduto;
     }
 
-    public float getPrecoProduto() {
+    public double getPrecoProduto() {
         return precoProduto;
     }
 
-    public void setPrecoProduto(float precoProduto) {
+    public void setPrecoProduto(double precoProduto) {
         this.precoProduto = precoProduto;
     }
 
