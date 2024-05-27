@@ -1,7 +1,8 @@
+
 package com.mycompany.sistemapadaria.models;
 
 import java.util.List;
-    
+
 public class Venda {
     private int idVenda;
     private int itemVenda;
@@ -93,4 +94,5 @@ public class Venda {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
 }

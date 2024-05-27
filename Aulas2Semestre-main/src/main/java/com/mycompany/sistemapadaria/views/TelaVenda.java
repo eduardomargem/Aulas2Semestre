@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.sistemapadaria.views;
 
 import com.mycompany.sistemapadaria.dao.ProdutoDAO;
@@ -16,10 +12,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author eduardo.mcjesus
- */
 public class TelaVenda extends javax.swing.JFrame {
 
     /**
